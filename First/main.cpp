@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -9,14 +10,15 @@ struct TransactionData
 {
   double amount;
   string senderKey;
-  string receiver;
+  string receiverKey;
   time_t timestamp;
 };
 
 class Block
 {
 private:
-  size_t currenthash;
+  int index;
+  size_t currentHash;
   size_t previousHash;
   size_t generateHash();
 public:
@@ -42,12 +44,12 @@ size_t Block::generateHash()
   hash<size_t> hash2;
   hash<size_t> lastHash;
   string toHash = to_string(data.amount) + data.receiverKey + data.senderKey + to_string(data.timestamp);
-  return lastHash(hash1(to_Hash) + hash2(previouseHash));
+  return lastHash(hash1(toHash) + hash2(previousHash));
 }
 
 size_t Block::getHash(){return currentHash;}
 size_t Block::getPrevHash(){return previousHash;}
-bool Block::isHashValid(){return generateHash == currentHash;}
+bool Block::isValid(){return generateHash() == currentHash;}
 
 //Blockchain
 class Blockchain
@@ -58,7 +60,7 @@ public:
   vector<Block> chain;
   Blockchain();
   void addBlock(TransactionData dt);
-  bool ischainvalid();
+  bool isvalid();
 
   Block *getlatestBlock();
 };
@@ -66,11 +68,11 @@ public:
 //BLockchain constructor
 Blockchain::Blockchain()
 {
-  Block genesis = createGenesisBlock();
+  Block genesis = creategenesisBlock();
   chain.push_back(genesis);
 }
 
-Block Blockchain::createGenesisBlock()
+Block Blockchain::creategenesisBlock()
 {
   time_t current;
   TransactionData d;
@@ -85,7 +87,7 @@ Block Blockchain::createGenesisBlock()
 }
 
 //Bad!! only for demo
-Block *Blockchain::addBlock(TransactionData d)
+void Blockchain::addBlock(TransactionData d)
 {
   int index = (int)chain.size() - 1;
   Block newBlock(index, d, getlatestBlock()->getHash());
@@ -95,19 +97,21 @@ bool Blockchain::isvalid()
 {
   vector<Block>::iterator it;
   int chainLen = (int)chain.size();
+  bool check;
 
   for (it = chain.begin(); it != chain.end(); ++it)
     {
       Block currentBlock = *it;
       if (!currentBlock.isValid()) return false;
 
-      if (chain > 2)
+      if (chain.size() >= 2)
 	{
-	  Block previouseBLock = *(it - 1);
-	  if (currentBlock.getPreviouseHash() != previouseBlock.getHash())return false;
+	  Block previouseBlock = *(it - 1);
+	  if (currentBlock.getPrevHash() != previouseBlock.getHash())return false;
 	}
     }
-}
+  return true;
+};
 
 int main()
 {
@@ -120,9 +124,9 @@ int main()
   data.amount = 1.5;
   data.receiverKey = "King Rush the 4rth";
   data.senderKey = "Some moocher";
-  data.timestamp = time(&dataTime)
+  data.timestamp = time(&dataTime);
 
-    Rushcoin.addBlock(data1);
+    Rushcoin.addBlock(data);
 
   cout << "Is chain valid?" << endl
        << Rushcoin.isvalid() << endl;
