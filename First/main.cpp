@@ -93,6 +93,8 @@ void Blockchain::addBlock(TransactionData d)
   Block newBlock(index, d, getlatestBlock()->getHash());
 }
 
+Block *Blockchain::getlatestBlock(){return &chain.back();}
+
 bool Blockchain::isvalid()
 {
   vector<Block>::iterator it;
