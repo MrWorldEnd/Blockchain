@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
-#include <string>
 
 using namespace std;
 
@@ -61,8 +60,8 @@ public:
   Blockchain();
   void addBlock(TransactionData dt);
   bool isvalid();
-
   Block *getlatestBlock();
+  void getsize();
 };
 
 //BLockchain constructor
@@ -86,11 +85,15 @@ Block Blockchain::creategenesisBlock()
   return genesis;
 }
 
+void Blockchain::getsize(){cout << chain.size();}
+
 //Bad!! only for demo
 void Blockchain::addBlock(TransactionData d)
 {
   int index = (int)chain.size() - 1;
-  Block newBlock(index, d, getlatestBlock()->getHash());
+  size_t previousHash = (int)chain.size() > 0? getlatestBlock()->getHash() : 0;
+  Block newBlock(index, d, previousHash);
+  chain.push_back(newBlock);
 }
 
 Block *Blockchain::getlatestBlock(){return &chain.back();}
@@ -115,22 +118,51 @@ bool Blockchain::isvalid()
   return true;
 };
 
+void chainsizeis (Blockchain x){x.getsize();}
+
 int main()
 {
   //startblockchain
   Blockchain Rushcoin;
 
   //data of first added block
-  TransactionData data;
-  time_t dataTime;
-  data.amount = 1.5;
-  data.receiverKey = "King Rush the 4rth";
-  data.senderKey = "Some moocher";
-  data.timestamp = time(&dataTime);
+  TransactionData data1, data2, data3;
+  time_t dataTime1;
+  data1.amount = 1.5;
+  data1.receiverKey = "King Rush the 4rth";
+  data1.senderKey = "Some moocher";
+  data1.timestamp = time(&dataTime1);
 
-    Rushcoin.addBlock(data);
 
-  cout << "Is chain valid?" << endl
-       << Rushcoin.isvalid() << endl;
-  
+    time_t dataTime2;
+
+    data2.amount = 1.5;
+    data2.receiverKey = "King Rush the 4rth";
+    data2.senderKey = "Some moocher";
+    data2.timestamp = time(&dataTime2);
+
+    time_t dataTime3;
+
+    data3.amount = 1.5;
+    data3.receiverKey = "King Rush the 4rth";
+    data3.senderKey = "Some moocher";
+    data3.timestamp = time(&dataTime3);
+
+
+    Rushcoin.addBlock(data1);
+    Rushcoin.addBlock(data2);
+    Rushcoin.addBlock(data3);
+
+  cout << "Is chain valid test?" << endl;
+
+  if (Rushcoin.isvalid())
+  {
+      cout << "\n chain is valid \n";
+  }
+  else
+      cout <<"\n chain is invalid \n";
+
+  cout << "The size is: ";
+  chainsizeis(Rushcoin);
+  cout << "Done";
 }
