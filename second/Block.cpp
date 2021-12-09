@@ -19,10 +19,13 @@ Block::Block(int inx, TransactionData d, size_t prevHash)
 
 size_t Block::generateHash()
 {
-    hash<string> datahash;
-    hash<size_t> lastHash;
-    string toHash = to_string(data.amount) + data.receiverKey + data.senderKey + to_string(data.timestamp);
-    return datahash(toHash) ^ (prevHash(to_string(lastHash)) << 1 );
+    std::string toHash = std::to_string(data.amount) + data.receiverKey + data.senderKey + std::to_string(data.timestamp);
+
+    std::hash<std::string> datahash;
+    std::hash<std::string> lastHash;
+
+    std::string x = std::to_string(previousHash);
+    return datahash(toHash) ^ (lastHash(x) << 1 );
 }
 
 size_t Block::getHash(){return currentHash;}

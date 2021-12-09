@@ -23,7 +23,7 @@ Block Blockchain::creategenesisBlock()
 {
     std::time_t current;
     TransactionData d(0, "GenesisBlock", "GenesisBlock", time(&current));
-    Block genesis(0, d, hash1(0));
+    Block genesis(0, d, 0);
     return genesis;
 }
 
@@ -42,7 +42,7 @@ Block *Blockchain::getlatestBlock(){return &chain.back();}
 
 bool Blockchain::isvalid()
 {
-    vector<Block>::iterator it;
+    std::vector<Block>::iterator it;
 
     for (it = chain.begin(); it != chain.end(); ++it)
     {
@@ -68,10 +68,10 @@ void Blockchain::printChain()
     {
         Block current = *it;
         printf("\n\nBlock ==================================================");
-        printf("\nIndex: %d", current.data.getIndex());
+        printf("\nIndex: %d", it->getIndex());
         printf("\nAmount: %f", current.data.amount);
         printf("\nSenderKey: %s", current.data.senderKey.c_str());
-        printf("\nReceiveKey: ",current.data.receiverKey.c_str());
+        printf("\nReceiveKey: %s",current.data.receiverKey.c_str());
         printf("\nTimestamp: %ld", current.data.timestamp);
         printf("\nHash: %zu", current.getHash());
         printf("\nPreviouse Hash: %zu", current.getPrevHash());

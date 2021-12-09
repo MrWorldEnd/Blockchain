@@ -8,10 +8,6 @@
 
 using namespace std;
 
-//Blockchain
-
-
-
 void chainsizeis (Blockchain x){x.getsize();}
 
 int main()

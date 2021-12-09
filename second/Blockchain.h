@@ -19,6 +19,7 @@ public:
     void addBlock(TransactionData dt);
     int getsize();
     bool isvalid();
+    void printChain();
 
     Block *getlatestBlock();
 
