@@ -7,10 +7,21 @@ using namespace std;
 class ARTpacket {
     private:
         Header header;
-        ARTPayload payload;        
+        ARTPayload payload;
+    public:
+        void setHeader(Header x){header = x;}
+        void setPayload(ARTPayload x){payload = x;}
 };
 class DTTpacket {
     private:
         Header header;
-        DTTPayload payload;    
+        DTTPayload payload;
+    public:
+        void setHeader(Header x){header = x;}
+        void setPayload(ARTPayload x){payload = x;}
+};
+
+//
+class block {
+    private
 };
