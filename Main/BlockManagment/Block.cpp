@@ -7,9 +7,9 @@
 #include <string>
 
 #include "Block.h"
-#include "TransactionData.h"
+#include "DataPackets.h"
 
-Block::Block(int inx, TransactionData d, size_t prevHash)
+Block::Block(int inx, TxPacket d, size_t prevHash)
 {
     index = inx;
     data = d;
@@ -33,4 +33,3 @@ size_t Block::getPrevHash(){return previousHash;}
 bool Block::isValid(){return generateHash() == getHash();}
 int Block::getIndex() {return index;}
 
-#include "Block.h"

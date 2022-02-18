@@ -6,7 +6,7 @@
 #define BLOCKCHAINDEV_BLOCK_H
 
 #include <ctime>
-#include "DataPackets.h"
+#include "TxPacket.h"
 //transaction data
 
 class Block
