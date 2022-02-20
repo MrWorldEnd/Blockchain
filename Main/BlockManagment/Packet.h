@@ -6,7 +6,7 @@
 using namespace std;
 //transaction packet
 
-class Payload {
+class Packet {
     private:
         PacketHeader pheader;
     public:
@@ -15,18 +15,18 @@ class Payload {
         }
 };
 
-class ARTpayload: public Payload {
+class ARTpacket: public Packet {
     private:
         string accrequestattribute;
     public:
-        ARTpayload(){
+        ARTpacket(){
             accrequestattribute = "accrequestattribute";
         };
         string getAccrequestattribute() const { return accrequestattribute; }
         void setAccrequestattribute(const string &x) { accrequestattribute = x; }
 };
 
-class DTTpayload: public Payload {
+class DTTpacket: public Packet {
     private:
         string dttmessage;
 
@@ -34,7 +34,7 @@ class DTTpayload: public Payload {
         string getDttmessage() const { return dttmessage; }
         void setDttmessage(const string &dttmessage_) { dttmessage = dttmessage_; }
 };
-
+/* 
  struct Header {
     string txHash;
     string txAddr;
@@ -47,4 +47,4 @@ class DTTpayload: public Payload {
     void setTxAddr(const string &x) { txAddr = x; }
     void setTxSigICPMSig(const string &x) { txSigICPMSig = x; }
  };
-
+ */

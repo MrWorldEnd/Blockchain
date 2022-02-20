@@ -16,7 +16,7 @@ public:
     Blockchain();
 
     std::vector<Block> getChain();
-    void addBlock(TransactionData dt);
+    void addBlock(Packet dt);
     int getsize();
     bool isvalid();
     void printChain();

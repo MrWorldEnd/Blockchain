@@ -8,17 +8,12 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
-#include "userdatastructures.h"
+#include "Packet.h"
 
-struct TXpacket {
-    private:
-        Header header;
-        Payload payload;
-};
 struct TxDataset
 {
-    std::vector<TXpacket> packets;
-    void addTX(TXpacket tx){
+    std::vector<Packet> packets;
+    void addTX(Packet tx){
         if (packets.size() < 5)
             packets.push_back(tx);
         else
