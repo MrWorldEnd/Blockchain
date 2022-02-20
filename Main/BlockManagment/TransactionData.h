@@ -5,21 +5,26 @@
 #ifndef BLOCKCHAINDEV_TRANSACTIONDATA_H
 #define BLOCKCHAINDEV_TRANSACTIONDATA_H
 
-struct TransactionData
-{
-    double amount;
-    std::string senderKey;
-    std::string receiverKey;
-    time_t timestamp;
+#include <iostream>
+#include <vector>
+#include <stdio.h>
+#include "userdatastructures.h"
 
-    TransactionData();
-    TransactionData(double amt, std::string sender, std::string receiver, time_t time)
-    {
-        amount = amt;
-        senderKey = sender;
-        receiverKey = receiver;
-        timestamp = time;
-    };
+struct TXpacket {
+    private:
+        Header header;
+        Payload payload;
+};
+struct TxDataset
+{
+    std::vector<TXpacket> packets;
+    void addTX(TXpacket tx){
+        if (packets.size() < 5)
+            packets.push_back(tx);
+        else
+            std::cout << "Data set full";
+    }
+
 };
 
 #endif //BLOCKCHAINDEV_TRANSACTIONDATA_H

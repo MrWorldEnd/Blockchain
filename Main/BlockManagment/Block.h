@@ -6,7 +6,7 @@
 #define BLOCKCHAINDEV_BLOCK_H
 
 #include <ctime>
-#include "DataPackets.h"
+#include "TransactionData.h"
 //transaction data
 
 class Block
@@ -16,17 +16,17 @@ private:
     size_t currentHash;
     size_t previousHash;
     size_t generateHash();
-    TxPacket data;
+    TxDataset data;
 public:
 
-    Block (int idx,TxPacket data, size_t prevHash);
+    Block (int idx,TxDataset d, size_t prevHash);
 
     int getIndex();
     size_t getHash();
     size_t getPrevHash();
-    TxPacket getData() const { return data; }
+    TxDataset getData() const { return data; }
     
-    void setData(const TxPacket &x) { data = x; }
+    void setData(const TxDataset &x) { data = x; }
 
     bool isValid();
 };

@@ -1,35 +1,27 @@
 #include <stdio.h>
 #include <ctime>
 #include <string>
+#include "PacketHeader.h"
 
 using namespace std;
 //transaction packet
 
 class Payload {
     private:
-        string subjectID;
-        string objlvl;
-        string objID;
-        string subjlvl;
-
+        PacketHeader pheader;
     public:
-
-        void setSbjID();
-        void setSubjectID(const string &x) { subjectID = x; }
-        void setObjlvl(const string &x) { objlvl = x; }
-        void setObjID(const string &x) { objID = x; }
-        void setSubjlvl(const string &x) { subjlvl = x; }
-        
-        string getSubjectID() const { return subjectID; }
-        string getObjlvl() const { return objlvl; }
-        string getObjID() const { return objID; }
-        string getSubjlvl() const { return subjlvl; }
+        void setpHeader(PacketHeader ph){
+            pheader= ph;
+        }
 };
 
 class ARTpayload: public Payload {
     private:
         string accrequestattribute;
     public:
+        ARTpayload(){
+            accrequestattribute = "accrequestattribute";
+        };
         string getAccrequestattribute() const { return accrequestattribute; }
         void setAccrequestattribute(const string &x) { accrequestattribute = x; }
 };
@@ -56,8 +48,3 @@ class DTTpayload: public Payload {
     void setTxSigICPMSig(const string &x) { txSigICPMSig = x; }
  };
 
-struct Packet {
-    private:
-        Header header;
-        Payload payload;
-};

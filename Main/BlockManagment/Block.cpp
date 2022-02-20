@@ -7,9 +7,9 @@
 #include <string>
 
 #include "Block.h"
-#include "DataPackets.h"
+#include "TransactionData.h"
 
-Block::Block(int inx, TxPacket d, size_t prevHash)
+Block::Block(int inx, TxDataset d, size_t prevHash)
 {
     index = inx;
     data = d;
