@@ -1,3 +1,4 @@
+from http import client, server
 import socket
 import threading
 import sys
@@ -5,20 +6,25 @@ import time
 from random import randint
 
 class Server:
-    sock = []
+    peers = []
     connections = []
+    
     def __init__ (self):
-        self.sock.bind(('10.11.167.158',10000))
-        self.sock.listen(1)
+        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+        sock.bind(('0.0.0.0',10000))
+        sock.listen(1)
         print("server running...")
 
         while True:
             c, a = sock.accept()
-            cThread = threading.Thread(target=self.handler, args(c, a))
+            cThread = threading.Thread(target=self.handler, args = (c, a))
             cThread.daemon = True
             cThread.start()
             self.connections.append(c)
-            print(sr(a[0]) + ' : ' + str(a[1]), "disconnected")
+            self.peers.append(a[0])
+            print(str(a[0]) + ' : ' + str(a[1]), "connected")
+            self.sendPeers()
 
     def handler(self, c, a):
         while True:
@@ -28,66 +34,72 @@ class Server:
             if not data:
                 print(str(a[0]) + ' : ' + str(a[1]), "disconnected")
                 self.connections.remove(c)
+                self.peers.remove(a[0])
                 c.close()
+                self.sendPeers()
                 break
     
     def sendPeers(self):
         p = ""
-        for peer i in self.peers:
+        for peer in self.peers:
             p = p + peer + ","
         
-        for connection in self.connection.send:
+        for connection in self.connections:
             connection.send((b'\x11' + bytes(p, "utf-8")))
 
-
 class Client:
-    def sendMsg(self):
+    def sendMsg(self, sock):
         while True:
-            self.sock.send(bytes(input(""), 'utf-8'))
+            sock.send(bytes(input(""), 'utf-8'))
     
     def __init__(self, address):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((address, 10000))
-
-        iThread = threading.Thread(target=self.sendMsg)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+        
+        iThread = threading.Thread(target=self.sendMsg,args=(sock,))
         iThread.daemon = True
         iThread.start()
 
         while True:
-            data = self.sock.recv(1024)
+            data = sock.recv(1024)
             if not data:
                 break
             if data[0:1] == b'\x11':
+                self.updatePeers(data[1:])
                 print("User has received peers")
             else:
                 print(str(data, 'utf-8'))
     
-    def update Peers(self, peerData):
+    if (len(sys.argv) > 1):
+        client = Client(sys.argv[1])
+    else:
+        server = Server()
+    
+    def updatePeers(self, peerData):
         p2p.peers = str(peerData,  "utf-8").split(",")[:-1]
 
 class p2p:
-    peers = []
+    peers = ['127.0.0.1']
 
 
 while True:
     try:
-        print("Trying to connect...")
-        time.sleep(radient(1,5))
+        print("Connecting...")
+        time.sleep(radint(1, 5))
         for peer in p2p.peers:
             try:
                 client = Client(peer)
-            except: KeyboardInterupt:
+            except KeyboardInterrupt:
                 sys.exit(0)
             except:
                 pass
             try:
-                server = Server()
-            except: KeyboardInterupt:
+                server = server()
+            except KeyboardInterrupt:
                 sys.exit(0)
             except:
-                print("Couldn't start server ...")
-except KeyboardInterupt:
-    sys.exit(0)
-
-
-
+                print("Couldnt start the server...")
+    except KeyboardInterrupt:
+        sys.exit(0)
+        
