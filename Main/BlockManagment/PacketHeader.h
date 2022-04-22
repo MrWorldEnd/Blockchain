@@ -6,33 +6,33 @@ using namespace std;
 struct PacketHeader
 {
     
-    string subjectID;
-    string objlvl;
-    string objID;
-    string subjlvl;
+    int subjectID;
+    int objlvl;
+    int objID;
+    int subjlvl;
     PacketHeader()
     {
-        subjectID = "testHeaderID";
-        objlvl = "testHeaderObjectLevel";
-        objID = "testHeaderObjectID";
-        subjlvl = "testHeadersubjectlvl";
+        subjectID = 0;
+        objlvl = 0;
+        objID = 0;
+        subjlvl = 0;
     };
-    PacketHeader(string x, string y, string z, string v)
+    PacketHeader(int x, int y, int z, int v)
     {
-        subjectID = x;
+        objID = x;
         objlvl = y;
-        objID = z;
+        subjectID = z;
         subjlvl = v;
     };
 
         void setSbjID();
-        void setSubjectID(const string &x) { subjectID = x; }
-        void setObjlvl(const string &x) { objlvl = x; }
-        void setObjID(const string &x) { objID = x; }
-        void setSubjlvl(const string &x) { subjlvl = x; }
+        void setSubjectID(const int &x) { subjectID = x; }
+        void setObjlvl(const int &x) { objlvl = x; }
+        void setObjID(const int &x) { objID = x; }
+        void setSubjlvl(const int &x) { subjlvl = x; }
 
-        string getSubjectID() const { return subjectID; }
-        string getObjlvl() const { return objlvl; }
-        string getObjID() const { return objID; }
-        string getSubjlvl() const { return subjlvl; }
+        int getSubjectID() const { return subjectID; }
+        int getObjlvl() const { return objlvl; }
+        int getObjID() const { return objID; }
+        int getSubjlvl() const { return subjlvl; }
 };

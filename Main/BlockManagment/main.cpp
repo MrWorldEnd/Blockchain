@@ -5,6 +5,7 @@
 #include "Block.h"
 #include "Blockchain.h"
 #include "TransactionData.h"
+#include "Objects.h"
 
 using namespace std;
 
@@ -56,3 +57,7 @@ int main()
   chainsizeis(Rushcoin);
   cout << "Done";
 }
+//sample
+
+Objects user = new Objects();
+Objects iotitem = new Objects();
