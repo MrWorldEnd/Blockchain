@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Objects.h"
-#include "Packet.h"
+#include "PacketPayload.h"
 
 
 bool validateTx(Objects user,Objects item){
@@ -10,8 +10,10 @@ bool validateTx(Objects user,Objects item){
     return result;
 }
 
-PacketHeader genPacketHeader(Objects user,Objects item){
-    PacketHeader x = PacketHeader(user.getid(),user.getaccesslvl(),item.getid(),item.getaccesslvl());
+//needs to form payload
+
+PacketPayload genPacketHeader(Objects user,Objects item){
+    PacketPayload x = PacketPayload(user.getid(),user.getaccesslvl(),item.getid(),item.getaccesslvl());
     return x;
 }
 

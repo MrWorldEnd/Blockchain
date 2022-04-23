@@ -13,12 +13,22 @@
 struct TxDataset
 {
     std::vector<Packet> packets;
+
     void addTX(Packet tx){
         if (packets.size() < 5)
             packets.push_back(tx);
         else
             std::cout << "Data set full";
     }
+
+    bool isfull(){
+        if (packets.size() < 4)
+            return false;
+        else
+            return true;
+    }
+
+    int getsize(){return packets.size();}
 
 };
 

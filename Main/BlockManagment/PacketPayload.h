@@ -3,21 +3,21 @@
 
 using namespace std;
 //transaction packet
-struct PacketHeader
+struct PacketPayload
 {
     
     int subjectID;
     int objlvl;
     int objID;
     int subjlvl;
-    PacketHeader()
+    PacketPayload()
     {
         subjectID = 0;
         objlvl = 0;
         objID = 0;
         subjlvl = 0;
     };
-    PacketHeader(int x, int y, int z, int v)
+    PacketPayload(int x, int y, int z, int v)
     {
         objID = x;
         objlvl = y;
