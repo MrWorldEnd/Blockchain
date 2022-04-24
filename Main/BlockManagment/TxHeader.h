@@ -16,10 +16,4 @@ using namespace std;
     void setTxSigICPMSig(const string &x) { txSigICPMSig = x; }
  };
 
-bool validateTx(Objects user,Objects item){
-    bool result = false;
-    if (user.getaccesslvl() > item.getaccesslvl())
-        result = true;
-    return result;
-}
 

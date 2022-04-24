@@ -27,7 +27,7 @@ Block::Block(int inx, TxDataset d, size_t prevHash)
 
 size_t Block::generateHash()
 {
-    std::string toHash = std::to_string(data.getpackets()) + data.receiverKey + data.senderKey + data.timestamp;
+    std::string toHash = data.strTxDataset();
 
     std::hash<std::string> datahash;
     std::hash<std::string> lastHash;

@@ -26,3 +26,19 @@ class Objects
             setid(y);
         }
 };
+class IotDevice : public Objects
+{
+    private:
+        char state;
+    public:
+        void turnOn(){state = 1;}
+        void turnOff(){state = 0;}
+
+        char getstate() {return state;}
+};
+
+struct Request
+{
+    Objects user;
+    Objects iotDevice;
+};

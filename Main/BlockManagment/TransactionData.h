@@ -20,6 +20,13 @@ struct TxDataset
     string senderKey;
     time_t timestamp;
 
+    string strTxDataset(){
+        string x;
+        x = receiverKey + " , " + senderKey + "\n";
+        x = x + to_string(timestamp) + "\n";
+        return "\n{" + x + "}";
+    }
+
     TxDataset(string x,string y){
         receiverKey = x;
         senderKey = y;

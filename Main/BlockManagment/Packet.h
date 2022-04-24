@@ -23,6 +23,12 @@ class Packet {
             payload = x;
         }
         PacketPayload getPayload(){return payload;}
+
+        string packetStr(){
+            string x;
+            x = pinfo + "/n" + payload.getPayloadstr();
+            return x;
+        }
 };
 
 class ARTpacket: public Packet {
@@ -30,10 +36,13 @@ class ARTpacket: public Packet {
         string accrequestattribute;
     public:
         ARTpacket():Packet(){
-            setpPinfo("access request attribute");  
+            setpPinfo("access request attribute\n");  
+            accrequestattribute = "undefined";
         };
         string getAccrequestattribute() const { return accrequestattribute; }
         void setAccrequestattribute(const string &x) { accrequestattribute = x; }
+
+
 };
 
 class DTTpacket: public Packet {
@@ -42,7 +51,7 @@ class DTTpacket: public Packet {
 
     public:
         DTTpacket():Packet(){
-            setpPinfo("Data Transmission packet");
+            setpPinfo("Data Transmission packet\n");
         };
         string getDttmessage() const { return dttmessage; }
         void setDttmessage(const string &dttmessage_) { dttmessage = dttmessage_; }

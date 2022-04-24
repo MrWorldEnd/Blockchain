@@ -7,9 +7,10 @@ struct PacketPayload
 {
     
     int subjectID;
+    int subjlvl;
     int objlvl;
     int objID;
-    int subjlvl;
+
     PacketPayload()
     {
         subjectID = 0;
@@ -35,4 +36,11 @@ struct PacketPayload
         int getObjlvl() const { return objlvl; }
         int getObjID() const { return objID; }
         int getSubjlvl() const { return subjlvl; }
+
+        string getPayloadstr(){
+            string x;
+            x = "User Info: {" + to_string(subjectID) + "," + to_string(subjlvl) + "}\n";
+            x = x + "Object Info: {" + to_string(objID) + "," + to_string(objlvl) + "}\n";
+            return x;
+        }
 };
