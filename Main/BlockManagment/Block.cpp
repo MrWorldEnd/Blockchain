@@ -9,6 +9,14 @@
 #include "Block.h"
 #include "TransactionData.h"
 
+Block::Block()
+{
+    index = 0;
+    setData(TxDataset());
+    previousHash = '0';
+    currentHash = generateHash();
+}
+
 Block::Block(int inx, TxDataset d, size_t prevHash)
 {
     index = inx;
@@ -19,7 +27,7 @@ Block::Block(int inx, TxDataset d, size_t prevHash)
 
 size_t Block::generateHash()
 {
-    std::string toHash = std::to_string(data.amount) + data.receiverKey + data.senderKey + std::to_string(data.timestamp);
+    std::string toHash = std::to_string(data.getpackets()) + data.receiverKey + data.senderKey + data.timestamp;
 
     std::hash<std::string> datahash;
     std::hash<std::string> lastHash;

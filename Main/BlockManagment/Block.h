@@ -18,7 +18,7 @@ private:
     size_t generateHash();
     TxDataset data;
 public:
-
+    Block ();
     Block (int idx,TxDataset d, size_t prevHash);
 
     int getIndex();

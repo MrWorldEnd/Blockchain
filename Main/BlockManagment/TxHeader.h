@@ -1,5 +1,6 @@
 #include <iostream>
- 
+#include "Objects.h"
+
 using namespace std;
 
  struct TxHeader {
@@ -14,3 +15,11 @@ using namespace std;
     void setTxAddr(const string &x) { txAddr = x; }
     void setTxSigICPMSig(const string &x) { txSigICPMSig = x; }
  };
+
+bool validateTx(Objects user,Objects item){
+    bool result = false;
+    if (user.getaccesslvl() > item.getaccesslvl())
+        result = true;
+    return result;
+}
+

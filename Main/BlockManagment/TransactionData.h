@@ -9,16 +9,34 @@
 #include <vector>
 #include <stdio.h>
 #include "Packet.h"
+#include <time.h> 
+
+using namespace std;
 
 struct TxDataset
 {
-    std::vector<Packet> packets;
+    vector<Packet> packets;
+    string receiverKey;
+    string senderKey;
+    time_t timestamp;
+
+    TxDataset(string x,string y){
+        receiverKey = x;
+        senderKey = y;
+        time(&timestamp);
+    }
+
+    TxDataset(){
+        receiverKey = "receiver Key";
+        senderKey = "Test Sender Key";
+        time(&timestamp);
+    }
 
     void addTX(Packet tx){
         if (packets.size() < 5)
             packets.push_back(tx);
         else
-            std::cout << "Data set full";
+            cout << "Data set full";
     }
 
     bool isfull(){
@@ -29,6 +47,8 @@ struct TxDataset
     }
 
     int getsize(){return packets.size();}
+
+    vector<Packet> getpackets(){return packets;}
 
 };
 

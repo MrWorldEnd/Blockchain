@@ -2,6 +2,7 @@
 #include <ctime>
 #include <string>
 #include "TxHeader.h"
+#include "PacketPayload.h"
 
 using namespace std;
 //transaction packet
@@ -10,6 +11,7 @@ class Packet {
     private:
         TxHeader pheader;
         string pinfo;
+        PacketPayload payload;
     public:
         void setpHeader(TxHeader ph){
             pheader= ph;
@@ -17,6 +19,10 @@ class Packet {
         void setpPinfo(string x){
             pinfo= x;
         }
+        void setpayload(PacketPayload x){
+            payload = x;
+        }
+        PacketPayload getPayload(){return payload;}
 };
 
 class ARTpacket: public Packet {
@@ -41,6 +47,8 @@ class DTTpacket: public Packet {
         string getDttmessage() const { return dttmessage; }
         void setDttmessage(const string &dttmessage_) { dttmessage = dttmessage_; }
 };
-/* 
 
- */
+PacketPayload genPacketPayload(Objects user,Objects item){
+    PacketPayload x = PacketPayload(user.getid(),user.getaccesslvl(),item.getid(),item.getaccesslvl());
+    return x;
+}
