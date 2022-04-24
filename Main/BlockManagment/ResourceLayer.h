@@ -2,13 +2,12 @@
 #include "Objects.h"
 
 
-bool validateTx(Objects user,Objects item){
+bool validateTx(Objects user,IotDevice item){
     bool result = false;
     if (user.getaccesslvl() > item.getaccesslvl())
         result = true;
     return result;
 }
-
 
 
 

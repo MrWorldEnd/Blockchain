@@ -35,6 +35,10 @@ class IotDevice : public Objects
         void turnOff(){state = 0;}
 
         char getstate() {return state;}
+
+        void toggle(){
+            if(state == 1){turnOff();}
+            else{turnOff();};}
 };
 
 struct Request
