@@ -1,7 +1,7 @@
 import socket
 import threading
 
-HOST = '127.0.0.1'
+HOST = '10.129.1.123'
 PORT = 9090
 
 class Client:
