@@ -2,62 +2,80 @@
 #include <ctime>
 #include <vector>
 
+#include <iostream>
+#include <fstream>
+
+#include "Socket.h"
+#include "json.hpp"
+
 #include "Block.h"
 #include "Blockchain.h"
 #include "TransactionData.h"
 #include "Objects.h"
+#include "PacketPayload.h"
 
 using namespace std;
 
-void chainsizeis (Blockchain x){x.getsize();}
-
-int main()
-{
-  //startblockchain
-  Blockchain Rushcoin;
-
-  //data of first added block
-  TransactionData data1, data2, data3;
-  time_t dataTime1;
-  data1.amount = 1.5;
-  data1.receiverKey = "King Rush the 4rth";
-  data1.senderKey = "Some moocher";
-  data1.timestamp = time(&dataTime1);
-
-
-    time_t dataTime2;
-
-    data2.amount = 1.5;
-    data2.receiverKey = "King Rush the 4rth";
-    data2.senderKey = "Some moocher";
-    data2.timestamp = time(&dataTime2);
-
-    time_t dataTime3;
-
-    data3.amount = 1.5;
-    data3.receiverKey = "King Rush the 4rth";
-    data3.senderKey = "Some moocher";
-    data3.timestamp = time(&dataTime3);
-
-
-    Rushcoin.addBlock(data1);
-    Rushcoin.addBlock(data2);
-    Rushcoin.addBlock(data3);
-
-  cout << "Is chain valid test?" << endl;
-
-  if (Rushcoin.isvalid())
-  {
-      cout << "\n chain is valid \n";
-  }
-  else
-      cout <<"\n chain is invalid \n";
-
-  cout << "The size is: ";
-  chainsizeis(Rushcoin);
-  cout << "Done";
+PacketPayload genPacketPayload(devides user,devides item){
+    PacketPayload x = PacketPayload(user,item);
+    return x;
 }
-//sample
 
-Objects user = new Objects();
-Objects iotitem = new Objects();
+bool validateTx(devides user,devides item){
+    bool result = false;
+    if (user.getaccesslvl() > item.getaccesslvl())
+        result = true;
+    return result;
+}
+vector<Packet>buffer;
+
+
+int main(){}
+
+void SendPacket(Packet x)
+{
+try {
+  Connection conn("127.0.0.1",8080);
+  conn.tx("message ");
+  string s = conn.rx();
+  cout << s << endl;
+
+  Packet inputpacket;
+
+  } catch (exception &e) {
+    cerr << e.what() << endl;
+    EXIT_FAILURE;
+  }
+}
+
+x = packet.info(listener());
+
+void packetreader(Packet x)
+{
+  if (x.getPinfo() == "blockchaindata")
+    {
+      listenforblockdata(packet);
+      validate(buffer);
+      ifblock(buffer);
+      updatebuffer();
+    }
+  else if (x.getPinfo() == "tx packet")
+    {
+      listenfortx();
+      validate(tx);
+      actuate(tx);
+    }
+}
+        
+void listenfortxdata(){
+        addtobuffer(tx);
+};
+
+void listenforblockdata(buffer.size()){
+        addtobuffer(packet);
+
+
+};}
+
+
+}}}

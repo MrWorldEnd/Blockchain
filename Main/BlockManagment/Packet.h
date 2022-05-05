@@ -22,6 +22,11 @@ class Packet {
         void setpayload(PacketPayload x){
             payload = x;
         }
+
+        string getPinfo(){
+            return pinfo;
+        }
+
         PacketPayload getPayload(){return payload;}
 
         string packetStr(){
@@ -56,8 +61,3 @@ class DTTpacket: public Packet {
         string getDttmessage() const { return dttmessage; }
         void setDttmessage(const string &dttmessage_) { dttmessage = dttmessage_; }
 };
-
-PacketPayload genPacketPayload(Objects user,Objects item){
-    PacketPayload x = PacketPayload(user.getid(),user.getaccesslvl(),item.getid(),item.getaccesslvl());
-    return x;
-}

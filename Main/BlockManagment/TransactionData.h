@@ -23,6 +23,7 @@ struct TxDataset
     string strTxDataset(){
         string x;
         x = receiverKey + " , " + senderKey + "\n";
+        
         x = x + to_string(timestamp) + "\n";
         return "\n{" + x + "}";
     }

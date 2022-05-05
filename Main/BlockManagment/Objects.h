@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-class Objects
+class devides
 {
     private:
         int id;
@@ -16,17 +16,17 @@ class Objects
         void setaccesslvl(int x){accesslvl = x;};
         int getaccesslvl(){return accesslvl;};
         
-        Objects(){
+        devides(){
             setaccesslvl(0);
             setid(0);
         }
 
-        Objects(int x, int y){
+        devides(int x, int y){
             setaccesslvl(x);
             setid(y);
         }
 };
-class IotDevice : public Objects
+class IotDevice : public devides
 {
     private:
         char state;
@@ -43,6 +43,6 @@ class IotDevice : public Objects
 
 struct Request
 {
-    Objects user;
-    Objects iotDevice;
+    devides user;
+    devides iotDevice;
 };

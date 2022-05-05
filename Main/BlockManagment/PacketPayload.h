@@ -18,6 +18,13 @@ struct PacketPayload
         objID = 0;
         subjlvl = 0;
     };
+    PacketPayload(devides x, devides y)
+    {
+        objID = x.getid();
+        objlvl = x.getaccesslvl();
+        subjectID = y.getid();
+        subjlvl = y.getaccesslvl();
+    }        
     PacketPayload(int x, int y, int z, int v)
     {
         objID = x;

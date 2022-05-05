@@ -2,13 +2,13 @@ CXX = g++
 CXXFLAGS = -Wall -g
 
 
-all: main.o Block.o Blockchain.o
-	$(CXX) $(CXXFLAGS) -o main main.o Block.o Blockchain.o
+all: main.o Block Blockchain
+	$(CXX) $(CXXFLAGS) -o main main.o Block Blockchain
 
-main.o: main.cpp TransactionData.h Block.h Blockchain.h
-	$(CXX) $(CXXFLAGS) -c main.cpp
+main.o: main.cpp TransactionData.h PacketPayload.h Block.h Blockchain.h
+	$(CXX) $(CXXFLAGS) -c main.cpp PacketPayload.h
 
-Block.o: Block.cpp Block.h TransactionData.h
+Block: Block.cpp Block.h TransactionData.h
 
 Blockchain: Blockchain.cpp Blockchain.h
 
