@@ -7,7 +7,6 @@
 #ifndef BLOCKCHAINDEV_BLOCK_H
 #define BLOCKCHAINDEV_BLOCK_H
 
-#include <ctime>
 #include "TransactionData.h"
 //transaction data
 
@@ -36,11 +35,14 @@ public:
 
 
     friend ostream& operator<<(ostream& os, const Block& dt){
-        os << to_string(dt.getIndex() )<< endl;
-        os << dt.getHash() << endl;
-        os << dt.getPrevHash() << endl;
-        os << dt.getData().packetStr() << endl;
-        return os;
+        std::string x;
+        x = "[\n    { \n" ;
+        x = x + "\"id\": \"" + to_string(dt.getIndex()) + "\",\n";
+        x = x +  "\"Hash\": \"" + dt.getHash() + "\",\n";
+        x = x + "\"PrevHash\": \"" + dt.getPrevHash() + "\",\n";
+        x = x +  "\"Data\": \"" dt.getData() + "\",\n";
+        x = x + "\n    }\n]";
+        return x;
     };
 };
 

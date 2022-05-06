@@ -64,6 +64,7 @@ void packetreader(Packet x)
       listenfortx();
       validate(tx);
       actuate(tx);
+      broadcastpackt(tx);
     }
 }
         
@@ -75,7 +76,4 @@ void listenforblockdata(buffer.size()){
         addtobuffer(packet);
 
 
-};}
-
-
-}}}
+};

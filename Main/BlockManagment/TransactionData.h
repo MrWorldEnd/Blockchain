@@ -15,18 +15,10 @@ using namespace std;
 
 struct TxDataset
 {
-    vector<Packet> packets;
+    vector <Packet> packets;
     string receiverKey;
     string senderKey;
     time_t timestamp;
-
-    string strTxDataset(){
-        string x;
-        x = receiverKey + " , " + senderKey + "\n";
-        
-        x = x + to_string(timestamp) + "\n";
-        return "\n{" + x + "}";
-    }
 
     TxDataset(string x,string y){
         receiverKey = x;
@@ -58,6 +50,17 @@ struct TxDataset
 
     vector<Packet> getpackets(){return packets;}
 
+    friend ostream& operator<<(ostream& os, const TxDataset& tx){
+        string x;
+        x = receiverKey + " , " + senderKey + "\n";
+        x = x + "[\n    { \n";
+        x = x + "Data: " ;
+        for(auto y: myVector){
+	        x = x + y + " , ";
+        }
+        x = x + to_string(timestamp) + "\n";
+        retun x;
+    }
 };
 
 #endif //BLOCKCHAINDEV_TRANSACTIONDATA_H
