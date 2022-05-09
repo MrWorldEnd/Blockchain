@@ -32,24 +32,6 @@ vector<Packet>buffer;
 
 int main(){}
 
-void SendPacket(Packet x)
-{
-try {
-  Connection conn("127.0.0.1",8080);
-  conn.tx("message ");
-  string s = conn.rx();
-  cout << s << endl;
-
-  Packet inputpacket;
-
-  } catch (exception &e) {
-    cerr << e.what() << endl;
-    EXIT_FAILURE;
-  }
-}
-
-x = packet.info(listener());
-
 void packetreader(Packet x)
 {
   if (x.getPinfo() == "blockchaindata")
@@ -67,13 +49,69 @@ void packetreader(Packet x)
       broadcastpackt(tx);
     }
 }
+int transactionport = 8080;
+int dttport = 8081;
+int dta = 8082;
         
 void listenfortxdata(){
-        addtobuffer(tx);
+  try {
+      // Normally you'd spawn threads for multiple connections.
+         Connection conn = PortListener(transactionport).waitForConnection();
+         conn.tx("Transaction message receved");
+         cout << "Hello message sent" << endl;
+
+         Packet input = conn.rx();
+
+        } catch (runtime_error &e) {
+                cerr << e.what() << endl;
+                return EXIT_FAILURE;
+        }
 };
 
-void listenforblockdata(buffer.size()){
-        addtobuffer(packet);
+void listenforDTT(){
+  try {
+    // Normally you'd spawn threads for multiple connections.
+    Connection conn = PortListener(8081).waitForConnection();
+    conn.tx("DTT message receved");
+    cout << "Hello message sent" << endl;
 
+    Packet input = conn.rx();
+
+    } catch (runtime_error &e) {
+    cerr << e.what() << endl;
+    return EXIT_FAILURE;
+  }
+}
+
+void listenforDTA(){
+  try {
+    // Normally you'd spawn threads for multiple connections.
+    Connection conn = PortListener(8082).waitForConnection();
+    conn.tx("DTA message receved");
+    cout << "Hello message sent" << endl;
+
+    Packet input = conn.rx();
+
+    } catch (runtime_error &e) {
+    cerr << e.what() << endl;
+    return EXIT_FAILURE;
+  }
+}
+
+void SendPacket(Packet x)
+{
+try {
+  Connection conn("127.0.0.1",8080);
+  conn.tx("message ");
+  string s = conn.rx();
+  cout << s << endl;
+
+  Packet inputpacket;
+
+  } catch (exception &e) {
+    cerr << e.what() << endl;
+    EXIT_FAILURE;
+  }
+}
 
 };
