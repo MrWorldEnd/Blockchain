@@ -12,7 +12,6 @@
 #include <time.h> 
 
 using namespace std;
-
 struct TxDataset
 {
     vector <Packet> packets;
