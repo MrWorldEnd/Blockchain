@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/mrworldend/Documents/GitHub/BLockchain/Main/BlockManagment'
+make: Leaving directory '/home/mrworldend/Documents/GitHub/BLockchain/Main/BlockManagment'
+ 
+make: *** No rule to make target 'Block.h', needed by 'main.o'.
+make: *** No rule to make target 'Blockchain.h', needed by 'main.o'.
+make: *** No rule to make target 'Block.cpp', needed by 'Block'.
+make: *** No rule to make target 'Blockchain.cpp', needed by 'Blockchain'.
+

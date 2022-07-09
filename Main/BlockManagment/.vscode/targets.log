@@ -1,0 +1,345 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sat Jul  9 04:40:53 2022
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+LOCAL_GIT_DIRECTORY = /usr/lib/github-desktop/resources/app/git
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-01ed2e49-19b5-4bf7-bdfa-e5f7e926ad51.sock
+# environment
+VSCODE_CWD = /home/mrworldend
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/mrworldend/Documents/GitHub/BLockchain/Main/BlockManagment
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+XDG_DATA_DIRS = /usr/share/xfce4:/usr/local/share/:/usr/share/:/usr/share
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/mrworldend/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# environment
+LANG = C
+# environment
+POWERSHELL_UPDATECHECK = Off
+# environment
+XAUTHORITY = /home/mrworldend/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile
+CURDIR := /home/mrworldend/Documents/GitHub/BLockchain/Main/BlockManagment
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /tmp/ssh-XXXXXXZ5vAnF/agent.1024
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = lightdm-xsession
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 8649
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+SESSION_MANAGER = local/Oblivion:@/tmp/.ICE-unix/1024,unix/Oblivion:/tmp/.ICE-unix/1024
+# automatic
+*F = $(notdir $*)
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+# default
+MAKEFILES := 
+# environment
+LANGUAGE = en_GB:en
+# automatic
+^F = $(notdir $^)
+# environment
+COMMAND_NOT_FOUND_INSTALL_PROMPT = 1
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_SEAT = seat0
+# environment
+XDG_CURRENT_DESKTOP = XFCE
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+DESKTOP_SESSION = lightdm-xsession
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = XFCE
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = mrworldend
+# environment
+XDG_VTNR = 7
+# makefile
+.DEFAULT_GOAL := all
+# environment
+DISPLAY = :0.0
+# environment
+USER = mrworldend
+# environment
+GTK_MODULES = gail:atk-bridge
+# default
+MAKE_VERSION := 4.3
+# environment
+SSH_AGENT_PID = 1071
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+POWERSHELL_TELEMETRY_OPTOUT = 1
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/mrworldend
+# environment
+_JAVA_OPTIONS = -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-71bfe1f7-1.68.1-main.sock
+# environment
+XDG_SESSION_ID = 2
+# environment
+PANEL_GDK_CORE_DEVICE_EVENTS = 0
+# environment
+DOTNET_CLI_TELEMETRY_OPTOUT = 1
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+QT_AUTO_SCREEN_SCALE_FACTOR = 0
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from 'Makefile', line 2)
+CXXFLAGS = -Wall -g
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm/data/mrworldend
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 1)
+CXX = g++
+# environment
+XDG_MENU_PREFIX = xfce-
+# environment
+GDMSESSION = lightdm-xsession
+# variable set hash-table stats:
+# Load=97/1024=9%, Rehash=0, Collisions=4/127=3%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2049, inode 6558417): 27 files, no impossibilities.
+
+# 27 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+Block.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Blockchain.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-04 16:00:39.529057195
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+rm:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+Block: Block.cpp Block.h TransactionData.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean: rm *.o all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+Blockchain: Blockchain.cpp Blockchain.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Block.h:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+PacketPayload.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-06 16:08:02.723260624
+#  File has been updated.
+#  Successfully updated.
+
+all: main.o Block Blockchain
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 6):
+	$(CXX) $(CXXFLAGS) -o main main.o Block Blockchain
+
+# Not a target:
+TransactionData.h:
+#  Implicit rule search has been done.
+ 
+make: *** No rule to make target 'Block.h', needed by 'main.o'.  Stop.
+
+#  Last modified 2022-07-06 15:41:15.561497942
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-07 17:40:58.958233961
+#  File has been updated.
+#  Successfully updated.
+
+main.o: main.cpp TransactionData.h PacketPayload.h Block.h Blockchain.h
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 9):
+	$(CXX) $(CXXFLAGS) -c main.cpp PacketPayload.h
+
+# Not a target:
+*.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Blockchain.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=17/1024=2%, Rehash=0, Collisions=0/47=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 42 / storage = 454 B / avg = 10 B
+# current buf: size = 8162 B / used = 454 B / count = 42 / avg = 10 B
+
+# strcache performance: lookups = 62 / hit rate = 32%
+# hash-table stats:
+# Load=42/8192=1%, Rehash=0, Collisions=0/62=0%
+# Finished Make data base on Sat Jul  9 04:40:53 2022
+
+ 
