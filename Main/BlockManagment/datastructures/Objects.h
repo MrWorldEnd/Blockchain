@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-class devides
+class devices
 {
     private:
         int id;
@@ -26,7 +26,7 @@ class devides
             setid(y);
         }
 };
-class IotDevice : public devides
+class IotDevice : public devices
 {
     private:
         char state;
@@ -39,6 +39,17 @@ class IotDevice : public devides
         void toggle(){
             if(state == 1){turnOff();}
             else{turnOff();};}
+        
+        IotDevice(){
+            setaccesslvl(0);
+            setid(0);
+            turnOff();
+        }
+        IotDevice(int x, int y){
+            setaccesslvl(x);
+            setid(y);
+            turnOff();
+        }
 };
 
 struct Request

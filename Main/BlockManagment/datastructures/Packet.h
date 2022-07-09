@@ -28,6 +28,7 @@ class Packet {
         }
 
         PacketPayload getPayload(){return payload;}
+        TxHeader getheader(){return pheader;}
 
         string packetStr(){
             string x;
@@ -41,11 +42,11 @@ class ARTpacket: public Packet {
         string accrequestattribute;
     public:
         ARTpacket():Packet(){
-            setpPinfo("access request attribute\n");  
+            setpPinfo("Access Request Attribute\n");  
             accrequestattribute = "undefined";
         };
-        string getAccrequestattribute() const { return accrequestattribute; }
-        void setAccrequestattribute(const string &x) { accrequestattribute = x; }
+        string getArt() const { return accrequestattribute; }
+        void setArt(const string &x) { accrequestattribute = x; }
 
 
 };
@@ -57,7 +58,8 @@ class DTTpacket: public Packet {
     public:
         DTTpacket():Packet(){
             setpPinfo("Data Transmission packet\n");
+            dttmessage = "undefined";
         };
-        string getDttmessage() const { return dttmessage; }
-        void setDttmessage(const string &dttmessage_) { dttmessage = dttmessage_; }
+        string getDtt() const { return dttmessage; }
+        void setDtt(const string &dttmessage_) { dttmessage = dttmessage_; }
 };
