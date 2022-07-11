@@ -114,4 +114,12 @@ try {
   }
 }
 
+      input buffer;
+      thread1:
+        broadcastNodeinfo();
+        listenfornodeinfo();
+      thread2:
+        listenfortxpacket();
+        listenforblockchaindata();
+
 };

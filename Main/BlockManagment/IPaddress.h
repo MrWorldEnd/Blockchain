@@ -11,6 +11,7 @@ class IPaddress
     public:
         IPaddress();
         IPaddress(int x, int y, int z, int c);
+        IPaddress(string x);
         string getString(){
             string x;
             x = to_string(addrpt[0]) +'.' + to_string(addrpt[1]) + '.' + to_string(addrpt[2]) +'.'+ to_string(addrpt[3]);
