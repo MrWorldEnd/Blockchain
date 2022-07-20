@@ -6,29 +6,20 @@
 #include <fstream>
 
 #include "Socket.h"
-#include "json.hpp"
 
-#include "Block.h"
 #include "Blockchain.h"
-#include "TransactionData.h"
-#include "Objects.h"
+#include "IPlistmanager.h"
 #include "PacketPayload.h"
 
 using namespace std;
 
-PacketPayload genPacketPayload(devides user,devides item){
+PacketPayload genPacketPayload(Device user,Device item){
     PacketPayload x = PacketPayload(user,item);
     return x;
 }
 
-bool validateTx(devides user,devides item){
-    bool result = false;
-    if (user.getaccesslvl() > item.getaccesslvl())
-        result = true;
-    return result;
-}
-vector<Packet>buffer;
 
+vector<Packet>buffer;
 
 int main(){}
 

@@ -13,6 +13,27 @@ class Packet {
         string pinfo;
         PacketPayload payload;
     public:
+        Packet(){
+            pheader = TxHeader();
+            pinfo = "Undefined Packet";
+            payload = PacketPayload();
+        }
+        Packet(Device user, Device item){
+            pheader= TxHeader();
+            payload = PacketPayload(user, item);
+            pinfo = "Undefined Packet";
+            if(validateTx(user,item)){
+                pinfo = "invalid packet";
+            }
+            
+        }
+        bool validateTx(Device user,Device item){
+            bool result = false;
+            
+            if (user.getaccesslvl() > item.getaccesslvl())
+                result = true;
+            return result;
+        }
         void setpHeader(TxHeader ph){
             pheader= ph;
         }

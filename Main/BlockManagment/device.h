@@ -10,6 +10,7 @@ class Device
         string name;
         bool mydevice;
         int accesslvl;
+        int id;
     public:
     //constructors
         Device();
@@ -19,10 +20,13 @@ class Device
         IPaddress getIP(){return address;};
         string getname(){return name;};
         bool ismine(){return mydevice;};
+        int getid(){return id;};
+        int getaccesslvl(){return accesslvl;};
 
         void setIP(IPaddress x){address = x;};
         void setname(string x){name = x;};
         void toggleismine(){mydevice = !mydevice;};
+        void setid(int x){id = x;}
 
         string getString();
 

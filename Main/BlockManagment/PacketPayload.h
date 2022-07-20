@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string>
+#include <IPlistmanager.cpp>
 
 using namespace std;
 //transaction packet
@@ -18,7 +19,7 @@ struct PacketPayload
         objID = 0;
         subjlvl = 0;
     };
-    PacketPayload(devides x, devides y)
+    PacketPayload(Device x, Device y)
     {
         objID = x.getid();
         objlvl = x.getaccesslvl();
@@ -42,7 +43,7 @@ struct PacketPayload
         int getSubjlvl() const { return subjlvl; }
         int getObjlvl() const { return objlvl; }
         int getObjID() const { return objID; }
-        s
+        
         string getPayloadstr(){
             string x;
             x = "User Info: {" + to_string(subjectID) + "," + to_string(subjlvl) + "}\n";
