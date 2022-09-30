@@ -26,8 +26,8 @@ struct TxDataset
     }
 
     TxDataset(){
-        receiverKey = "receiver Key";
-        senderKey = "Test Sender Key";
+        receiverKey = "GenesisBlock";
+        senderKey = "GenesisBlock";
         time(&timestamp);
     }
 
@@ -51,14 +51,16 @@ struct TxDataset
 
     friend ostream& operator<<(ostream& os, const TxDataset& tx){
         string x;
-        x = receiverKey + " , " + senderKey + "\n";
+        extern vector <Packet> packets;
+        x = tx.receiverKey + " , " + tx.senderKey + "\n";
         x = x + "[\n    { \n";
         x = x + "Data: " ;
-        for(auto y: myVector){
-	        x = x + y + " , ";
+        for(auto y: packets){
+	        x = x + y.getPinfo() + " , ";
         }
-        x = x + to_string(timestamp) + "\n";
-        retun x;
+        x = x + to_string(tx.timestamp) + "\n";
+        os << x;
+        return os;
     }
 };
 

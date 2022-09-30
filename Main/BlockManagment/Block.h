@@ -36,13 +36,14 @@ public:
 
     friend ostream& operator<<(ostream& os, const Block& dt){
         std::string x;
-        x = "[\n    { \n" ;
-        x = x + "\"id\": \"" + to_string(dt.getIndex()) + "\",\n";
-        x = x +  "\"Hash\": \"" + dt.getHash() + "\",\n";
-        x = x + "\"PrevHash\": \"" + dt.getPrevHash() + "\",\n";
-        x = x +  "\"Data\": \"" dt.getData() + "\",\n";
-        x = x + "\n    }\n]";
-        return x;
+        os << "[\n    { \n" ;
+        os << "\"id\": \"" << to_string(dt.index) << "\",\n";
+        os <<  "\"Hash\": \"" << dt.currentHash << "\",\n";
+        os << "\"PrevHash\": \"" << dt.previousHash << "\",\n";
+        os <<  "\"Data\": \"" << dt.getData() << "\",\n";
+        os << "\n    }\n]";
+        os << x;
+        return os;
     };
 };
 

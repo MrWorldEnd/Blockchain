@@ -6,6 +6,7 @@
 #define BLOCKCHAINDEV_BLOCKCHAIN_H
 
 #include <vector>
+#include "Block.h"
 
 class Blockchain
 {
@@ -16,7 +17,7 @@ public:
     Blockchain();
 
     std::vector<Block> getChain();
-    void addBlock(Packet dt);
+    void addBlock(TxDataset dt);
     int getsize();
     bool isvalid();
     void printChain();

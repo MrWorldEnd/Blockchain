@@ -6,9 +6,8 @@
 #include <ctime>
 #include <string>
 
-#include "Block.h"
 #include "Blockchain.h"
-
+#include "TransactionData.h"
 #include <vector>
 
 Blockchain::Blockchain()
@@ -22,7 +21,7 @@ std::vector <Block> Blockchain::getChain() {return chain;}
 Block Blockchain::creategenesisBlock()
 {
     std::time_t current;
-    TransactionData d(0, "GenesisBlock", "GenesisBlock", time(&current));
+    TxDataset d;
     Block genesis(0, d, 0);
     return genesis;
 }
@@ -30,7 +29,7 @@ Block Blockchain::creategenesisBlock()
 int Blockchain::getsize(){return chain.size();}
 
 //Bad!! only for demo
-void Blockchain::addBlock(TransactionData d)
+void Blockchain::addBlock(TxDataset d)
 {
     int index = (int)chain.size();
     std::size_t previousHash = (int)chain.size() > 0 ? getlatestBlock()->getHash() : 0;
