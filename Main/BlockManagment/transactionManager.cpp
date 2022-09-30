@@ -1,10 +1,12 @@
 #include "request.h"
-#include "TransactionData.h"
+#include "node.h"
+#include <fstream>
 
 std::stack<Request> blockbuffer;
 
-Request txhandler(Device client,Device server, IotDevice device){
-    Request rq(client, server, device);
+Packet txhandler(Request x){
+    Packet thispc();
+    thispc.validateTx(x.getclient(),  device);
     blockbuffer.push(rq);
     return rq;
 };

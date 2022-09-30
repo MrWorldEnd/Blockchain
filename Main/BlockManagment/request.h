@@ -31,6 +31,10 @@ public:
     void setserver(Device x){server = x;}
     void setiotdevice(IotDevice x){iotdevice = x;}
 
+    Device getclient(){return client;}
+    Device getserver(){return server;}
+    IotDevice getdevice(){return iotdevice;}
+
     ~Request();
 
 friend ostream& operator<<(ostream& os,const Request& x){
