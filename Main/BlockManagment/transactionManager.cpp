@@ -5,16 +5,22 @@
 std::stack<Request> blockbuffer;
 
 Packet txhandler(Request x){
-    Packet thispc();
-    thispc.validateTx(x.getclient(),  device);
-    blockbuffer.push(rq);
-    return rq;
+    //if request sent from client
+    ARTpacket thispc;
+    PacketPayload payload(x.getclient(), x.getserver());
+    thispc.setpayload(payload);
+    broadtx(x);
+    return thispc;
 };
 
-Packet broadcasttx(Request x)
+Packet broadtx(Request x)
 {
-    
-}
+    //if request sent from network peer
+    DTTpacket thispk;
+    PacketPayload payload(x.getclient(), x.getserver());
+    thispk.setpayload(payload);
+    return thispk;
+};
 
 void blockhandler(){
     if (blockbuffer.size() == 4)

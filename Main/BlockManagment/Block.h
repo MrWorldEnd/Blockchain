@@ -17,19 +17,20 @@ private:
     size_t currentHash;
     size_t previousHash;
     size_t generateHash;
-    TxDataset data;
+    Packet data;
 public:
     Block ();
-    Block (int idx,TxDataset d, size_t prevHash);
+    Block (Packet d);
+    Block (int idx,Packet d, size_t prevHash);
 
     int getIndex();
     size_t getHash();
     size_t getPrevHash();
-    TxDataset getData() const { return data; }
+    Packet getData() const { return data; }
     
     size_t generateHash();
 
-    void setData(const TxDataset &x) { data = x; }
+    void setData(const Packet &x) { data = x; }
 
     bool isValid();
 
@@ -40,7 +41,7 @@ public:
         os << "\"id\": \"" << to_string(dt.index) << "\",\n";
         os <<  "\"Hash\": \"" << dt.currentHash << "\",\n";
         os << "\"PrevHash\": \"" << dt.previousHash << "\",\n";
-        os <<  "\"Data\": \"" << dt.getData() << "\",\n";
+        os <<  "\"Data\": \"" << dt.getData().packetStr() << "\",\n";
         os << "\n    }\n]";
         os << x;
         return os;

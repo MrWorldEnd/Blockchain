@@ -26,5 +26,7 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp.errorSquiggles": "Enabled"
+  "C_Cpp.errorSquiggles": "Enabled",
+  "C_Cpp_Runner.debuggerPath": "gdb",
+  "C_Cpp_Runner.useMsvc": false
 }

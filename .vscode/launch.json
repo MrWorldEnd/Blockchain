@@ -7,13 +7,11 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "c:/Users/st1259/Documents/GitHub/Blockchain/Main",
-      "environment": [],
-      "program": "c:/Users/st1259/Documents/GitHub/Blockchain/Main/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
+      "externalConsole": false,
+      "cwd": "/home/mrworldend/Documents/GitHub/Blockchain",
+      "program": "/home/mrworldend/Documents/GitHub/Blockchain/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
-      "console": "integratedTerminal",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

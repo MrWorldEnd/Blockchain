@@ -48,6 +48,7 @@ struct PacketPayload
             string x;
             x = "User Info: {" + to_string(subjectID) + "," + to_string(subjlvl) + "}\n";
             x = x + "Object Info: {" + to_string(objID) + "," + to_string(objlvl) + "}\n";
+            x = x + to_string(isvalidreq());
             return x;
         }
 
