@@ -2,18 +2,20 @@
 #include "node.h"
 #include <fstream>
 
-std::stack<Request> blockbuffer;
+std::stack<Packet> currentblockbuffer;
+Blockchain blockchain;
 
-Packet txhandler(Request x){
+
+Packet artpack(Request x){
     //if request sent from client
     ARTpacket thispc;
     PacketPayload payload(x.getclient(), x.getserver());
     thispc.setpayload(payload);
-    broadtx(x);
+    //broadcast_tx(x);
     return thispc;
 };
 
-Packet broadtx(Request x)
+Packet dttpack(Request x)
 {
     //if request sent from network peer
     DTTpacket thispk;
@@ -22,10 +24,20 @@ Packet broadtx(Request x)
     return thispk;
 };
 
-void blockhandler(){
-    if (blockbuffer.size() == 4)
+void addTxstack(stack <Packet> txs){
+    Packet x;
+    while(!txs.empty())
     {
+        x = txs.top();
+        blockchain.addBlock(x);
+        txs.pop();
+    }
+}
 
+void blockhandler(){
+    if (currentblockbuffer.size() > 3)
+    {
+        addTxstack(currentblockbuffer);
     }
 };
 

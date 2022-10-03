@@ -29,7 +29,7 @@ Block Blockchain::creategenesisBlock()
 int Blockchain::getsize(){return chain.size();}
 
 //Bad!! only for demo
-void Blockchain::addBlock(TxDataset d)
+void Blockchain::addBlock(Packet d)
 {
     int index = (int)chain.size();
     std::size_t previousHash = (int)chain.size() > 0 ? getlatestBlock()->getHash() : 0;

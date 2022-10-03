@@ -38,14 +38,6 @@ struct TxDataset
             cout << "Data set full";
     }
 
-    void addTx(stack <Packet> txs){
-        Packet x;
-        while(!txs.empty())
-        {
-            x = txs.top();
-        }
-    }
-
     bool isfull(){
         if (packets.size() < 4)
             return false;
