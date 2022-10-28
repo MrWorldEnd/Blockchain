@@ -9,7 +9,8 @@ Blockchain blockchain;
 Packet artpack(Request x){
     //if request sent from client
     ARTpacket thispc;
-    PacketPayload payload(x.getclient(), x.getserver());
+    PacketPayload payload;
+    payload.setObject(x.getdevice());
     thispc.setpayload(payload);
     //broadcast_tx(x);
     return thispc;
@@ -41,4 +42,4 @@ void blockhandler(){
     }
 };
 
-void Concensus(){};
+string getbockchainlength(){};

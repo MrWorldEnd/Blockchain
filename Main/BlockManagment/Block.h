@@ -17,7 +17,7 @@ private:
     size_t currentHash;
     size_t previousHash;
     size_t generateHash;
-    Packet data;
+    Packet pdata;
 public:
     Block ();
     Block (Packet d);
@@ -26,24 +26,25 @@ public:
     int getIndex();
     size_t getHash();
     size_t getPrevHash();
-    Packet getData() const { return data; }
+    Packet getData() const { return pdata; }
     
     size_t generateHash();
 
-    void setData(const Packet &x) { data = x; }
+    void setData(const Packet &x) { pdata = x; }
 
     bool isValid();
 
 
     friend ostream& operator<<(ostream& os, const Block& dt){
-        std::string x;
         os << "[\n    { \n" ;
-        os << "\"id\": \"" << to_string(dt.index) << "\",\n";
+        os << "\"Index\": \"" << dt.index << "\",\n";
         os <<  "\"Hash\": \"" << dt.currentHash << "\",\n";
         os << "\"PrevHash\": \"" << dt.previousHash << "\",\n";
-        os <<  "\"Data\": \"" << dt.getData().packetStr() << "\",\n";
+        os << "\"Transaction Data\": \"" << dt.getData().packetStr() << "\",\n";
+        os << "\"SenderKey:\": \"" << dt.getData().getheader().getsenderKey() << "\",\n";
+        os <<  "\"ReceiveKey\": \"" << dt.getData().getheader().getreceiverKey() << "\",\n";
+        os << "\"Timestamp\": \"" << dt.getData().getheader().gettimestamp() << "\",\n";
         os << "\n    }\n]";
-        os << x;
         return os;
     };
 };

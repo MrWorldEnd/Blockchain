@@ -1,16 +1,9 @@
-#include <stack>          // std::stack
-#include <vector>         // std::vector
-#include <deque>          // std::deque
-#include <netdb.h>
-#include <arpa/inet.h>  
+#include <chrono>
+#include <ctime>  
 #include "device.cpp"
-#include "gethost.cpp"
 #include "Blockchain.cpp"
+#include "request.h" 
 
-
-#include <string.h>
-#include <readline/readline.h>
-#include <readline/history.h>
 
 using namespace std;
 
@@ -21,17 +14,20 @@ class Node : public Device{
     string nodeName;
     IPaddress myaddress;
     Blockchain blockchain;
-    TxDataset currentblock;
+    Packet currentblock;
+    string devicekey;
   public:
     Node(){
       nodeName = "XXXX";
       myaddress = IPaddress();
       blockchain = Blockchain();
+      devicekey = "";
     }
     Node(string x){
       nodeName = x;
       myaddress = IPaddress();
       blockchain = Blockchain();
+      devicekey = "";
     }
     void Initialize(){
     }
@@ -44,19 +40,23 @@ class Node : public Device{
         return result;
     }
     
-    void accessDevice(Device user,IotDevice item)
+    void accessDevice(Device user, IotDevice item)
     {
-      Packet newpacket( user, item);
-      currentblock.addTX(newpacket);
-    }
+      Packet newpacket;
+      time_t time = chrono::system_clock::now();
 
-    void broadcastblock()
-    {
-      //broadcast object to peers on network
-      if(currentblock.isfull())
-      {
-        //add network functionality for [broadcast(currentblock);]
-        blockchain.addBlock(currentblock);
-      }
+      PacketPayload newpayload;
+      newpayload.setSubject(user);
+      newpayload.setObject(item);
+
+      TxHeader newheader;
+      newheader.setsenderKey(devicekey);
+      newheader.settimestamp();
+      newheader.setTxAddr(myaddress.getString());
+
+
+      newpacket.setpayload(newpayload);
+      newpacket.setpPinfo("");
+      newpacket.setpHeader(newheader);
     }
 };

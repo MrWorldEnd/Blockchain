@@ -24,6 +24,7 @@ public:
 
     Block *getlatestBlock();
 
+    std::string outChain();
 };
 
 #endif //BLOCKCHAINDEV_BLOCKCHAIN_H

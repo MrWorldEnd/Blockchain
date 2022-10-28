@@ -21,7 +21,7 @@ std::vector <Block> Blockchain::getChain() {return chain;}
 Block Blockchain::creategenesisBlock()
 {
     std::time_t current;
-    TxDataset d;
+    Packet d;
     Block genesis(0, d, 0);
     return genesis;
 }
@@ -66,16 +66,37 @@ void Blockchain::printChain()
     for (it = chain.begin(); it != chain.end(); ++it)
     {
         Block current = *it;
-        printf("\n\nBlock ==================================================");
-        printf("\nIndex: %d", it->getIndex());
-        printf("\nAmount: %f", current.data.amount);
-        printf("\nSenderKey: %s", current.data.senderKey.c_str());
-        printf("\nReceiveKey: %s",current.data.receiverKey.c_str());
-        printf("\nTimestamp: %ld", current.data.timestamp);
-        printf("\nHash: %zu", current.getHash());
-        printf("\nPreviouse Hash: %zu", current.getPrevHash());
-        printf("Is Block Valid? : %d", current.isValid());
+
+        std::cout << "\n\nBlock ==================================================\n";
+        std::cout << current;
+    }
+}
+
+std::string to_string(Block x)
+{
+    std::string out;
+    out = out + "\n\nBlock ==================================================\n";
+    out = out + "[\n    { \n" ;
+    out = out + "\"Index\": \"" + to_string(x.getIndex()) + "\",\n";
+    out = out + "\"Hash\": \"" + to_string(x.getHash()) + "\",\n";
+    out = out + "\"PrevHash\": \"" + to_string(x.getPrevHash()) + "\",\n";
+    out = out + "\"Transaction Data\": \"" + x.getData().getPayload().getPayloadstr() + "\",\n";
+    out = out + "\"SenderKey\": \"" + x.getData().getheader().getsenderKey() + "\",\n";
+    out = out + "\"ReceiveKey\": \"" + x.getData().getheader().getreceiverKey() + "\",\n";
+    out = out + "\"Timestamp\": \"" + x.getData().getheader().gettimestamp() + "\",\n";
+    out = out + "\n    }\n]";
+    return out;
+}
+
+std::string Blockchain::outChain()
+{
+    std::vector<Block>::iterator it;
+    std::string out;
+
+    for (it = chain.begin(); it != chain.end(); ++it)
+    {
+        Block current = *it;
+        out = out + to_string(current);
     }
 }
 ;
-

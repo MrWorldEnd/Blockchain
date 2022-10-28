@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctime>
 #include <string>
 #include "TxHeader.h"
 #include "PacketPayload.h"
@@ -20,7 +19,20 @@ class Packet {
         }
         Packet(Device user, Device item){
             pheader= TxHeader();
-            payload = PacketPayload(user, item);
+            
+            pheader.setreceiverKey();
+            pheader.setsenderKey();
+            pheader.settimestamp();
+            pheader.setTxAddr();
+
+
+            payload = PacketPayload();
+
+            payload.setObjID(item.getid());
+            payload.setObjlvl(item.getaccesslvl());
+            payload.setSubjectID(user.getid());
+            payload.setSubjlvl(user.getaccesslvl());
+
             pinfo = "Undefined Packet";
             if(validateTx(user,item)){
                 pinfo = "invalid packet";
