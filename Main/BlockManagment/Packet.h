@@ -39,31 +39,31 @@ class Packet {
             }
             
         }
-        bool validateTx(Device user,Device item){
+        virtual bool validateTx(Device user,Device item){
             bool result = false;
             
             if (user.getaccesslvl() > item.getaccesslvl())
                 result = true;
             return result;
         }
-        void setpHeader(TxHeader ph){
+        virtual void setpHeader(TxHeader ph){
             pheader= ph;
         }
-        void setpPinfo(string x){
+        virtual void setpPinfo(string x){
             pinfo= x;
         }
-        void setpayload(PacketPayload x){
+        virtual void setpayload(PacketPayload x){
             payload = x;
         }
 
-        string getPinfo(){
+        virtual string getPinfo(){
             return pinfo;
         }
 
-        PacketPayload getPayload(){return payload;}
-        TxHeader getheader(){return pheader;}
+        virtual PacketPayload getPayload(){return payload;}
+        virtual TxHeader getheader(){return pheader;}
 
-        string packetStr(){
+        virtual string packetStr(){
             string x;
             x = pinfo + "/n" + payload.getPayloadstr();
             return x;
@@ -78,8 +78,13 @@ class ARTpacket: public Packet {
             setpPinfo("Access Request Attribute\n");  
             accrequestattribute = "undefined";
         };
-        string getArt() const { return accrequestattribute; }
-        void setArt(const string &x) { accrequestattribute = x; }
+        string getArt() const { return accrequestattribute;}
+        void setArt(const string &x) { accrequestattribute = x;}
+
+        
+
+        
+
 
 
 };
