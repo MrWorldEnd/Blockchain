@@ -17,7 +17,7 @@ Block::Block()
     currentHash = generateHash();
 }
 
-Block::Block(int inx, Packet d, size_t prevHash)
+Block::Block(int inx, TxDataset d, size_t prevHash)
 {
     index = inx;
     data = d;
