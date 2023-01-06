@@ -8,19 +8,21 @@ Device::Device(){
             name = "Unknown";
             mydevice = false;
             accesslvl = 0;
+            lockCode = "Lock code unset";
         }
 
 Device::Device(IPaddress x){
             address = x;
             mydevice = false;
-            mydevice = false;
             accesslvl = 0;
+            lockCode = "Lock code unset";
         }
 
 Device::Device(IPaddress x, std::string y){
             address = x;
             name = y;
             mydevice = false;
+            lockCode = "Lock code unset";
         }
 
 string Device::getString(){

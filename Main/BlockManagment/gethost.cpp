@@ -29,7 +29,7 @@ void IP_formatter(char *IPbuffer) { //convert IP string to dotted decimal format
    }
 
 }
-main() {
+int main() {
    char host[256];
    char *IP;
    struct hostent *host_entry;

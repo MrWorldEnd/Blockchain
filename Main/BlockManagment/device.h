@@ -1,4 +1,4 @@
-#include "IPaddress.cpp"
+#include "key.h"
 
 using namespace std;
 
@@ -11,6 +11,7 @@ class Device
         bool mydevice;
         int accesslvl;
         int id;
+        string lockCode;
     public:
     //constructors
         Device();
@@ -66,25 +67,3 @@ class IotDevice : public Device
         }
 };
 
-class Key : 
-{
-	private:
-		int accesslvl;
-		char const *id;
-		char const *itemcode;
-	public:
-		Key()
-		{
-			accesslvl = 3;
-			id = "Not Set";
-			itemcode = "Not Set";
-		}
-		
-		int getaccesslvl(){return accesslvl;}
-		int getid(){return id;}
-		char *getitemcode(){return itemcode;}
-		
-		void setaccesslvl(x){accesslvl = x;}
-		void setid(x){id = x;}
-		void setitemcode(x){itemcode= x;}
-}
