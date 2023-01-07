@@ -1,4 +1,3 @@
-#include <string>
 #include "device.h"
 
 using namespace std;

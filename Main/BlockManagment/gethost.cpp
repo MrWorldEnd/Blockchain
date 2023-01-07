@@ -9,6 +9,7 @@
 #include <arpa/inet.h>
 
 #include "device.cpp"
+#include "key.h"
 
 void check_host_name(int hostname) { //This function returns host name for local computer
    if (hostname == -1) {
