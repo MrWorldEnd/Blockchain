@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <sqlite3.h>
 #include <cstring>
+
+#include <iostream>
+#include <fstream>
+#include <nlohmann/json.hpp>
+
 #include "device.cpp"
 #include "key.h"
 
@@ -148,4 +153,15 @@ void loadKeylist(){
 	}
 
 	sqlite3_close(DB);
+};
+void createlocalbockchain()
+{
+	// Create and open a text file
+	ofstream MyFile("localdata.json");
+
+	// Write to the file
+	MyFile << "Files can be tricky, but it is fun enough!";
+
+	// Close the file
+	MyFile.close();
 };
