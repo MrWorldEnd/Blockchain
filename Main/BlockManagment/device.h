@@ -1,4 +1,4 @@
-#include "IPaddress.cpp"
+#include "key.h"
 
 using namespace std;
 
@@ -11,6 +11,7 @@ class Device
         bool mydevice;
         int accesslvl;
         int id;
+        string lockCode;
     public:
     //constructors
         Device();
@@ -65,3 +66,4 @@ class IotDevice : public Device
             turnOff();
         }
 };
+

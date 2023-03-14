@@ -21,7 +21,7 @@ std::vector <Block> Blockchain::getChain() {return chain;}
 Block Blockchain::creategenesisBlock()
 {
     std::time_t current;
-    Packet d;
+    TxDataset d;
     Block genesis(0, d, 0);
     return genesis;
 }
@@ -29,7 +29,7 @@ Block Blockchain::creategenesisBlock()
 int Blockchain::getsize(){return chain.size();}
 
 //Bad!! only for demo
-void Blockchain::addBlock(Packet d)
+void Blockchain::addBlock(TxDataset d)
 {
     int index = (int)chain.size();
     std::size_t previousHash = (int)chain.size() > 0 ? getlatestBlock()->getHash() : 0;

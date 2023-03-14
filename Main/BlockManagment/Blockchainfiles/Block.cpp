@@ -5,14 +5,12 @@
 //Block Constructor
 #include <stdio.h>
 #include <string>
-
 #include "Block.h"
-#include "TransactionData.h"
 
 Block::Block()
 {
     index = 0;
-    setData(TxDataset());
+    setData(Packet());
     previousHash = '0';
     currentHash = generateHash();
 }
@@ -25,9 +23,11 @@ Block::Block(int inx, TxDataset d, size_t prevHash)
     currentHash = generateHash();
 }
 
+
+
 size_t Block::generateHash()
 {
-    std::string toHash = data.strTxDataset();
+    std::string toHash = data.getPayload().getPayloadstr();
 
     std::hash<std::string> datahash;
     std::hash<std::string> lastHash;

@@ -1,7 +1,3 @@
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <vector>
 #include "IPaddress.h"
 
 using namespace std;
@@ -32,10 +28,4 @@ IPaddress::IPaddress(int x, int y, int z, int c){
             this->addrpt[1] = y;
             this->addrpt[2] = z;
             this->addrpt[3] = c;
-        }
-
-string IPaddress::getString(){
-            string x;
-            x = to_string(addrpt[0]) +'.' + to_string(addrpt[1]) + '.' + to_string(addrpt[2]) +'.'+ to_string(addrpt[3]);
-            return x;
         }

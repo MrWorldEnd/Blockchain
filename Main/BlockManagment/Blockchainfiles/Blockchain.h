@@ -6,14 +6,15 @@
 #define BLOCKCHAINDEV_BLOCKCHAIN_H
 
 #include <vector>
+#include "Block.h"
 
 class Blockchain
 {
 private:
-    Block creategenesisBlock();
     std::vector<Block> chain;
 public:
     Blockchain();
+    Block creategenesisBlock();
 
     std::vector<Block> getChain();
     void addBlock(Packet dt);
@@ -23,6 +24,7 @@ public:
 
     Block *getlatestBlock();
 
+    std::string outChain();
 };
 
 #endif //BLOCKCHAINDEV_BLOCKCHAIN_H
