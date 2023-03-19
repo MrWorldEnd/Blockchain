@@ -17,11 +17,11 @@ private:
     size_t currentHash;
     size_t previousHash;
     size_t generateHash;
-    Packet pdata;
+    TxDataset pdata;
 public:
     Block ();
     Block (Packet d);
-    Block (int idx,Packet d, size_t prevHash);
+    Block (int idx,TxDataset d, size_t prevHash);
 
     int getIndex();
     size_t getHash();
@@ -30,7 +30,7 @@ public:
     
     size_t generateHash();
 
-    void setData(const Packet &x) { pdata = x; }
+    void setData(const TxDataset &x) { pdata = x; }
 
     bool isValid();
 

@@ -18,10 +18,10 @@ using namespace std;
 class Blockchain
 {
 private:
-    Block creategenesisBlock();
     std::vector<Block> chain;
 public:
     Blockchain();
+    Block creategenesisBlock();
 
     std::vector<Block> getChain();
     void addBlock(Packet dt);

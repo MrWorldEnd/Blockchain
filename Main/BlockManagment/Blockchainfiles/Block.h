@@ -3,12 +3,10 @@
 //
 
 #include <iostream>
+#include "TransactionData.h"
 
 #ifndef BLOCKCHAINDEV_BLOCK_H
 #define BLOCKCHAINDEV_BLOCK_H
-
-#include "TransactionData.h"
-//transaction data
 
 class Block
 {
@@ -17,32 +15,35 @@ private:
     size_t currentHash;
     size_t previousHash;
     size_t generateHash;
-    TxDataset data;
+    TxDataset pdata;
 public:
     Block ();
+    Block (Packet d);
     Block (int idx,TxDataset d, size_t prevHash);
 
     int getIndex();
     size_t getHash();
     size_t getPrevHash();
-    TxDataset getData() const { return data; }
+    Packet getData() const { return pdata; }
     
     size_t generateHash();
 
-    void setData(const TxDataset &x) { data = x; }
+    void setData(const TxDataset &x) { pdata = x; }
 
     bool isValid();
 
 
     friend ostream& operator<<(ostream& os, const Block& dt){
-        std::string x;
-        x = "[\n    { \n" ;
-        x = x + "\"id\": \"" + to_string(dt.getIndex()) + "\",\n";
-        x = x +  "\"Hash\": \"" + dt.getHash() + "\",\n";
-        x = x + "\"PrevHash\": \"" + dt.getPrevHash() + "\",\n";
-        x = x +  "\"Data\": \"" dt.getData() + "\",\n";
-        x = x + "\n    }\n]";
-        return x;
+        os << "[\n    { \n" ;
+        os << "\"Index\": \"" << dt.index << "\",\n";
+        os <<  "\"Hash\": \"" << dt.currentHash << "\",\n";
+        os << "\"PrevHash\": \"" << dt.previousHash << "\",\n";
+        os << "\"Transaction Data\": \"" << dt.getData().packetStr() << "\",\n";
+        os << "\"SenderKey:\": \"" << dt.getData().getheader().getsenderKey() << "\",\n";
+        os <<  "\"ReceiveKey\": \"" << dt.getData().getheader().getreceiverKey() << "\",\n";
+        os << "\"Timestamp\": \"" << dt.getData().getheader().gettimestamp() << "\",\n";
+        os << "\n    }\n]";
+        return os;
     };
 };
 
