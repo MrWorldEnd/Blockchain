@@ -6,7 +6,14 @@
 #define BLOCKCHAINDEV_BLOCKCHAIN_H
 
 #include <vector>
-#include "Block.h"
+<<<<<<< Updated upstream
+=======
+#include "Block.cpp"
+#include "jsonsystem.h"
+
+using namespace rapidjson;
+using namespace std;
+>>>>>>> Stashed changes
 
 class Blockchain
 {
@@ -24,7 +31,12 @@ public:
 
     Block *getlatestBlock();
 
+<<<<<<< Updated upstream
+=======
     std::string outChain();
+    
+    Document currentblockchainstate;
+>>>>>>> Stashed changes
 };
 
 #endif //BLOCKCHAINDEV_BLOCKCHAIN_H

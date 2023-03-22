@@ -5,15 +5,27 @@
 #include <stdio.h>
 #include <ctime>
 #include <string>
+<<<<<<< Updated upstream
 
 #include "Blockchain.h"
 #include "TransactionData.h"
 #include <vector>
+=======
+#include <vector>
+#include "Blockchain.h"
+#include "TransactionData.h"
+
+using namespace rapidjson;
+std::string filename = ("blockchain.json");
+>>>>>>> Stashed changes
 
 Blockchain::Blockchain()
 {
     Block genesis = creategenesisBlock();
     chain.push_back(genesis);
+    
+    //initiate currentblockchain in json file
+    addblocktofile(genesis, filename);
 }
 
 std::vector <Block> Blockchain::getChain() {return chain;}
@@ -35,6 +47,9 @@ void Blockchain::addBlock(TxDataset d)
     std::size_t previousHash = (int)chain.size() > 0 ? getlatestBlock()->getHash() : 0;
     Block newBlock(index, d, previousHash);
     chain.push_back(newBlock);
+    //add block to json
+    addblocktofile(newBlock, filename);
+    
 }
 
 Block *Blockchain::getlatestBlock(){return &chain.back();}

@@ -3,12 +3,10 @@
 //
 
 #include <iostream>
+#include "TransactionData.h"
 
 #ifndef BLOCKCHAINDEV_BLOCK_H
 #define BLOCKCHAINDEV_BLOCK_H
-
-#include "TransactionData.h"
-//transaction data
 
 class Block
 {

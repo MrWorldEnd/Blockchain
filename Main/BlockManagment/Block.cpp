@@ -5,9 +5,7 @@
 //Block Constructor
 #include <stdio.h>
 #include <string>
-
 #include "Block.h"
-#include "TransactionData.h"
 
 Block::Block()
 {
