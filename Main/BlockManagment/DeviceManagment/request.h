@@ -1,9 +1,10 @@
-#include "IPlistmanager.h"
+#include "key.h"
+#include "device.cpp"
 
 class Request
 {
 private:
-    Device client;
+    Key client;
     Device server;
     IotDevice iotdevice;
     bool valid;
@@ -11,12 +12,12 @@ public:
     Request()
 {
     Device x;
-    client = Device();
+    client = Key();
     server =  Device();
     iotdevice = IotDevice();
     valid = false;
 };;
-    Request(Device user, Device master, IotDevice device){
+    Request(Key user, Device master, IotDevice device){
     client = user;
     server = master;
     iotdevice = device;
@@ -27,15 +28,14 @@ public:
     {valid = false;}
 };
 
-    void setclient(Device x){client = x;}
+    void setclient(Key x){client = x;}
     void setserver(Device x){server = x;}
     void setiotdevice(IotDevice x){iotdevice = x;}
 
-    Device getclient(){return client;}
+    Key getclient(){return client;}
     Device getserver(){return server;}
     IotDevice getdevice(){return iotdevice;}
 
-    ~Request();
 
 friend ostream& operator<<(ostream& os,const Request& x){
             os << "Client: " << x.client 
@@ -44,5 +44,7 @@ friend ostream& operator<<(ostream& os,const Request& x){
                 << " Valid: " << x.valid
                 << "\n";
             return os;
-        }
+}
+
+~Request();
 };

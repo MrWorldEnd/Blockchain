@@ -7,9 +7,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <string>
 
 #include "IPaddress.cpp"
-#include <string>
 
 using namespace std;
 
@@ -53,39 +53,25 @@ int main() {
 
 class Key {
     int accesslvl;
-	char const host[256];
-	int name;
+	char host[256];
+	char const *id;
 	char const *ip;
-	char const itemcode[256];
+	char const *itemcode;
 	struct hostent *host_entry;
   public:
-    Key createKey()
+    Key()
 	{
-	Key newkey;
-
-	newkey.name = gethostname(host, sizeof(host)); //find the host name
-	check_host_name(newkey.name);
+	int name;
+	name = gethostname(host, sizeof(host)); //find the host name
+	check_host_name(name);
 	host_entry = gethostbyname(host); //find host information
 	check_host_entry(host_entry);
 	ip = inet_ntoa(*((struct in_addr*) host_entry->h_addr_list[0])); //Convert into IP string
-	return newkey;
+	
+	id = "ID not set";
+	itemcode = "ID not set";
+	accesslvl = 0;
 	};
-
-	Key()
-	{
-		Key myKey;
-		myKey = createKey();
-		id = 'ID not set';
-		itemcode = 'ID not set';
-		accesslvl = 0;
-	};
-
-	Key UserKey(){
-		Key mykey = Key();
-		//set ID from user account
-		//set itemcode from
-		//set access lecel
-	}
 
 Key guestKey(Key SuperUser)
 	{
@@ -95,5 +81,19 @@ Key guestKey(Key SuperUser)
 	guestKey.itemcode = SuperUser.itemcode;
 	return guestKey;
 	};
+
+int getaccesslvl(){return accesslvl;}
+
+friend ostream& operator<<(ostream& os,const Key& x)
+{
+	string out;
+	os << "Key ID: " 
+		<< x.id 
+		<< "Key Accesslvl: "
+		<< x.accesslvl
+		<< "Device Name: "
+		<< x.host;
 }
+~Key();
+};
 

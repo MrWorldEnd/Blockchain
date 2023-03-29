@@ -41,6 +41,7 @@ class Device
             os << "Name: " + x.name + "Address: " + ip;
             return os;
         }
+    ~Device();
 };
 
 class IotDevice : public Device

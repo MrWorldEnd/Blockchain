@@ -26,4 +26,5 @@ class IPaddress
             os << to_string(x.addrpt[3]);
             return os;
         }
+    ~IPaddress();
 };

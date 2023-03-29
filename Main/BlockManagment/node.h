@@ -86,14 +86,14 @@ void GenerateIotDeviceDB()
 		}
 		sqlite3_close(db);
 };
-}
-};
+
 void InitializeDB(){
     //Setup trusted device ilst
  	CreateTrusteddeviceDB();
 	GenerateKeyDB();
 	GenerateIotDeviceDB();
 }
+
 class Node : public Device{    
   private:
   
