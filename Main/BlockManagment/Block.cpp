@@ -1,12 +1,12 @@
 //
-// Created by mrworldend on 09/12/2021.
+// Created by mrworldend on 04/07/2023.
 //
 
-//Block Constructor
 #include <stdio.h>
 #include <string>
 #include "Block.h"
 
+//Block Constructor
 Block::Block()
 {
     index = 0;
@@ -40,4 +40,3 @@ size_t Block::getHash(){return currentHash;}
 size_t Block::getPrevHash(){return previousHash;}
 bool Block::isValid(){return generateHash() == getHash();}
 int Block::getIndex() {return index;}
-

@@ -24,10 +24,10 @@ Value jBlock (Block x)
     obj.AddMember("index", dt.getindex(), allocator);
 
     //size_t printing
-    val.SetString(.c_str(), static_cast<SizeType>(description.length()), allocator);
+    val.SetString(dt.getHash().c_str(), static_cast<SizeType>(description.length()), allocator);
     obj.AddMember("Hash", val, allocator);
 
-    val.SetString(.c_str(), static_cast<SizeType>(description.length()), allocator);
+    val.SetString(dt.getPrevHash().c_str(), static_cast<SizeType>(description.length()), allocator);
     obj.AddMember("PrevHash", val, allocator);
 
     val.SetString(dt.getData().packetStr().c_str(), static_cast<SizeType>(description.length()), allocator);
@@ -45,5 +45,34 @@ Value jBlock (Block x)
     out.PushBack(obj, allocator);
 
     return out;
+};
 
+void addblocktofile(Block x, string filename)
+{
+    Document d;
+    d.SetObject();
+
+    Document::AllocatorType& allocator = d.GetAllocator();
+
+    size_t sz = allocator.Size();
+
+    //something
+    Value blocktoadd;
+    blocktoadd = jBlock(x);
+
+    d.AddMember("Block", blocktoadd, allocator);
+
+    // Convert JSON document to string
+    StringBuffer strbuf;
+    PrettyWriter<StringBuffer> writer(strbuf);
+    d.Accept(writer);
+
+    string temp=strbuf.GetString();
+
+    // Create and open a text file
+    ofstream myFile(filename);
+
+    myFile << temp;
+
+    myFile.close();
 };

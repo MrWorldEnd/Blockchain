@@ -31,6 +31,7 @@ public:
     void setData(const TxDataset &x) { pdata = x; }
 
     bool isValid();
+    
 
 
     friend ostream& operator<<(ostream& os, const Block& dt){

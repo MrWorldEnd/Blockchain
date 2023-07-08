@@ -10,10 +10,7 @@
 #include "Blockchain.h"
 #include "TransactionData.h"
 #include <vector>
-=======
-#include <vector>
-#include "Blockchain.h"
-#include "TransactionData.h"
+#include "Blockchainsql.cpp"
 
 using namespace rapidjson;
 std::string filename = ("blockchain.json");

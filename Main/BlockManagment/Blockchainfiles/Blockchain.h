@@ -9,6 +9,7 @@
 <<<<<<< Updated upstream
 =======
 #include "Block.cpp"
+#include "blockchainsql.cpp"
 #include "jsonsystem.h"
 
 using namespace rapidjson;
