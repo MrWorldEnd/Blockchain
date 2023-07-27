@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string>
-#include "TxHeader.h"
+#include "txHeader.h"
 #include "PacketPayload.h"
 
 using namespace std;
@@ -20,10 +20,10 @@ class Packet {
         Packet(Device user, Device item){
             pheader= TxHeader();
             
-            pheader.setreceiverKey();
-            pheader.setsenderKey();
-            pheader.settimestamp();
-            pheader.setTxAddr();
+            pheader.setreceiverKey(item.getString());
+            pheader.setsenderKey(user.getString());
+            //pheader.settimestamp();
+            //pheader.setTxAddr();
 
 
             payload = PacketPayload();
@@ -65,7 +65,17 @@ class Packet {
 
         virtual string packetStr(){
             string x;
-            x = pinfo + "/n" + payload.getPayloadstr();
+            x.append("packet:");
+            x.append("[\n {\n");
+            x.append("packet Header:");
+            x.append(pheader.getTxSigICPMSig());
+            x.append(",");
+            x.append("packet Info");
+            x.append(pinfo);
+            x.append(",");
+            x.append("packet payload:");
+            x.append(payload.getPayloadstr());
+            x.append(";\n    }\n]");
             return x;
         }
 };
