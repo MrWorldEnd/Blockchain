@@ -1,8 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/mrworldend/Documents/GitHub/BLockchain/Main/BlockManagment'
-g++ -Wall -g -c main.cpp PacketPayload.h
-g++ -Wall -g    Block.cpp Block.h TransactionData.h   -o Block
-g++ -Wall -g    Blockchain.cpp Blockchain.h   -o Blockchain
-g++ -Wall -g -o main main.o Block Blockchain
-make: Leaving directory '/home/mrworldend/Documents/GitHub/BLockchain/Main/BlockManagment'
- 
