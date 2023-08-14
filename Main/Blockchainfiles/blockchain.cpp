@@ -7,7 +7,11 @@
 
 using namespace std;
 
+string json = "test.json";
+
 int Blockchain::getsize(){return chain.size();}
+
+//main blockchain
 
 bool Blockchain::isvalid()
 {
@@ -48,6 +52,4 @@ void Blockchain::addBlock(TxDataset d)
     std::string previousHash = chain[index].getHash();
     Block newBlock(index, d, previousHash);
     chain.push_back(newBlock);
-    //add block to json
-    addblock2db(newBlock);
 };

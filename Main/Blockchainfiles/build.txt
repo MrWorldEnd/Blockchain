@@ -1,1 +1,1 @@
- g++ -o blockchain  main.cpp -lssl -lcrypto
+ g++ -o blockchain  main.cpp -lssl -lcrypto -lsqlite3

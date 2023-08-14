@@ -63,7 +63,7 @@ class Packet {
         virtual PacketPayload getPayload(){return payload;}
         virtual TxHeader getheader(){return pheader;}
 
-        virtual string packetStr(){
+        string packetStr(){
             string x;
             x.append("packet:");
             x.append("[\n {\n");

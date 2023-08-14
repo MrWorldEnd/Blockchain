@@ -18,7 +18,6 @@ private:
     TxDataset pdata;
 public:
     Block ();
-    Block (Packet d);
     Block (int idx,TxDataset d, std::string prevHash);
 
     int getIndex();
@@ -44,7 +43,7 @@ public:
     out = out + "\"Index\": \"" + std::to_string(index) + "\",\n";
     out = out + "\"Hash\": \"" + currentHash + "\",\n";
     out = out + "\"PrevHash\": \"" + previousHash + "\",\n";
-    out = out + "\"Transaction Data\": \"" + getData().getstr() + "\",\n";
+    out = out + "\"Transaction Data\": \"" + pdata.getstr() + "\",\n";
     out = out + "\n    }\n]";
     return out;
 }

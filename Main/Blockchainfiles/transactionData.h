@@ -55,7 +55,7 @@ struct TxDataset
         x = x + "\n\"    { \n";
         x = x + "Transaction Data: {" ;
         for(auto y: packets){
-	        x = x + y.getPinfo() + " , ";
+	        x.append(y.packetStr() + " , ");
         }
         x = x +  + "}\n";
         x = x + "\"SenderKey:\": \"" + receiverKey  + "\",\n";

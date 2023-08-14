@@ -17,10 +17,12 @@ private:
 public:
     Blockchain(){
         Block genesis;
-        genesis = creategenesisBlock();
-        chain.push_back(genesis);
+        creategenesisBlock();
     };
-    Block creategenesisBlock();
+    void creategenesisBlock(){
+        Block x;
+        chain.push_back(x);
+    };
     
     std::vector<Block> getChain(){return chain;};
     void addBlock(Block bk){

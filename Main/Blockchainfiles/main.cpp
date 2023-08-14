@@ -1,33 +1,36 @@
-#include "blockchain.cpp"
+#include "datalayer.cpp"
 
 std::string filename =  ("blockchain.json");
 std::string requestbuffer =("buffer.json");
-Blockchain x;
 
-void initializeNode() {
+Blockchain initializeNode() {
+    Blockchain x;
+    createTable();
     ofstream MyFile(filename);
     ofstream MyBuffer(requestbuffer);
     x.isvalid();
     x.printChain();
     MyFile.close();
     MyBuffer.close();
+    return x;
 }
 
-void test(){
-    Packet tx;
+Blockchain test(){
+    Blockchain x;
+    Block tx;
     x.addBlock(tx);
-    x.addBlock(tx);
-    x.addBlock(tx);
-    x.addBlock(tx);
-    x.addBlock(tx);
+    addblocktofile(tx,filename);
+    addblock2db(tx);
+    return x;
 }
 
 
 
 int main() {
-    initializeNode();
-    test();
-    x.outChain();
+    Blockchain x;
+    x = initializeNode();
+    x = test();
+    x.printChain();
     //listen()
     //check buffer
 }
