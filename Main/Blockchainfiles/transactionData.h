@@ -12,12 +12,16 @@
 #include <time.h> 
 
 using namespace std;
-struct TxDataset
+class TxDataset
 {
+    private:
+    
     vector <Packet> packets;
     string receiverKey;
     string senderKey;
     time_t timestamp;
+
+    public:
 
     TxDataset(string x,string y){
         receiverKey = x;
@@ -49,18 +53,17 @@ struct TxDataset
 
     vector<Packet> getpackets(){return packets;}
 
-    std:: string getstr(){
+    std::string getstr(){
         string x;
-        extern vector <Packet> packets;
-        x = x + "\n\"    { \n";
+        x.append("\n\"    { \n");
         x = x + "Transaction Data: {" ;
         for(auto y: packets){
 	        x.append(y.packetStr() + " , ");
         }
-        x = x +  + "}\n";
-        x = x + "\"SenderKey:\": \"" + receiverKey  + "\",\n";
-        x = x +  "\"ReceiveKey\": \"" + senderKey + "}\",\n";
-        x = x +  "\"timestamps\": \"" + to_string(timestamp) + "}\"\n";
+        x.append("}\n");
+        x.append("\"SenderKey:\": \"" + receiverKey  + "\",\n");
+        x.append("\"ReceiveKey\": \"" + senderKey + "}\",\n");
+        x.append("\"timestamps\": \"" + to_string(timestamp) + "}\"\n");
         return x;
     }
 };
