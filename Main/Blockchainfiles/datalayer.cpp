@@ -1,5 +1,15 @@
 #include "blockchain.cpp"
+
 #include <sqlite3.h>
+#include <fstream>
+
+#include "rapidjson/document.h"
+#include "rapidjson/filereadstream.h"
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/ostreamwrapper.h>
 
 using namespace rapidjson;
 using namespace std;
@@ -71,6 +81,7 @@ void addblock2db(Block x) {
 
 
 
+
 Value jBlock (Block x)
 {
     cout<< "json sub program";
@@ -101,29 +112,53 @@ Value jBlock (Block x)
     return out;
 };
 
-void addblocktofile(Block x, string filename)
+Document addblocktoDocument(Block x, string filename)
 {
     cout<<"Adding block to Json started\n";
-    Document d;
-    d.SetObject();
 
-    Document::AllocatorType& allocator = d.GetAllocator();
+    Document jsonfile;
+    jsonfile.SetObject();
+
+    Document::AllocatorType& allocator = jsonfile.GetAllocator();
 
     size_t sz = allocator.Size();
-
-    d.AddMember("Block", jBlock(x), allocator);
+    Value json_objects(kObjectType);
+    json_objects = jBlock(x);
+    jsonfile.AddMember("Block", json_objects, allocator);
 
     // Convert JSON document to string
     StringBuffer strbuf;
     PrettyWriter<StringBuffer> writer(strbuf);
-    d.Accept(writer);
+    jsonfile.Accept(writer);
     string temp=strbuf.GetString();
 
-    // Create and open a text file
-    ofstream myFile(filename);
-    myFile << temp;
+    cout<<"Adding block to Json document completed\n";
+    return jsonfile;
+};
 
-    myFile.close();
-    return;
+Document loadFile(string filename) 
+{
+    ifstream ifs {filename};
+    
+    IStreamWrapper isw { ifs };
+
+    Document doc {};
+    doc.ParseStream( isw );
+
+    return doc;
+};
+
+void createfile(std::string x)
+{
+        ofstream MyFile(x);
+    if(!is_file_exist(x.c_str()))
+    {        
+        ofstream MyFile(x);
+        MyFile.close();   
+        
+    }else
+    {
+      MyFile = loadFile(x);
+      return MyFile;
+    };
 }
-
