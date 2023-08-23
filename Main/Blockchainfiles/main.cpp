@@ -1,7 +1,8 @@
 #include "datalayer.cpp"
 
-std::string filename =  ("blockchain.json");
-std::string requestbuffer =("buffer.json");
+std::string filename = CCFileUtils::sharedFileUtils()->fullPathForFilename("blockchain.json");
+std::string requestbuffer = CCFileUtils::sharedFileUtils()->fullPathForFilename("buffer.json");
+
 Document blockchainstate;
 Document bufferState;
 bool is_file_exist(const char *fileName)

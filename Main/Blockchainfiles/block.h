@@ -24,7 +24,12 @@ public:
     std::string getHash();
     std::string getPrevHash();
     TxDataset getData() const { return pdata;}
+    
+    void setIndex(const int &x) { index = x;}
     void setData(const TxDataset &x) { pdata = x;}
+    void setHash(const std::string &x) { currentHash = x;}
+    void setPrevHash(const std::string &x) { previousHash = x;}
+    
     bool isValid();
     
     friend ostream& operator<<(ostream& os, const Block& dt){
