@@ -85,15 +85,10 @@ void addblock2db(Block x) {
 Value jBlock (Block x)
 {
     cout<< "json sub program";
-    Document d;
-    d.SetObject();
 
     Value out(kArrayType);
     Value obj(kObjectType);
     Value val(kObjectType);
-
-    Document::AllocatorType& allocator = d.GetAllocator();
-    size_t sz = allocator.Size();
 
     obj.AddMember("index", x.getData().getsize(), allocator);
 
@@ -116,7 +111,7 @@ Document addblocktoDocument(Block x, string filename)
 {
     cout<<"Adding block to Json started\n";
 
-    Document jsonfile;
+    Document jsonfile = loadFile(filename);
     jsonfile.SetObject();
 
     Document::AllocatorType& allocator = jsonfile.GetAllocator();

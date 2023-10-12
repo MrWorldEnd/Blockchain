@@ -1,28 +1,21 @@
-#include "datalayer.cpp"
+include "initialization.cpp"
+extern BLOCKCHAIN blockchain;
+
 
 std::string filename = CCFileUtils::sharedFileUtils()->fullPathForFilename("blockchain.json");
 std::string requestbuffer = CCFileUtils::sharedFileUtils()->fullPathForFilename("buffer.json");
 
 Document blockchainstate;
 Document bufferState;
-bool is_file_exist(const char *fileName)
+
+BLOCKCHAIN blockchain;
+
+void addBlocktochain(Block x)
 {
-    std::ifstream infile(fileName);
-    return infile.good();
+    blockchain.addBlock(x);
+    addblock2db(x);
+    addblocktoDocument(x);
 }
-
-Blockchain initializeNode() {
-    std::cout << "initializeNode Started\n";
-    Blockchain x;
-    createTable();
-    createfile(filename);
-    createfile(requestbuffer);
-    return x;
-}
-    
-
-
-
 Blockchain test(){
     std:cout << "test program start \n";
     Blockchain x;
