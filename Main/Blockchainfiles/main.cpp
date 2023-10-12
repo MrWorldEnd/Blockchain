@@ -1,5 +1,5 @@
-include "initialization.cpp"
-extern BLOCKCHAIN blockchain;
+#include "initialization.cpp"
+extern Blockchain blockchain;
 
 
 std::string filename = CCFileUtils::sharedFileUtils()->fullPathForFilename("blockchain.json");
@@ -8,7 +8,6 @@ std::string requestbuffer = CCFileUtils::sharedFileUtils()->fullPathForFilename(
 Document blockchainstate;
 Document bufferState;
 
-BLOCKCHAIN blockchain;
 
 void addBlocktochain(Block x)
 {
