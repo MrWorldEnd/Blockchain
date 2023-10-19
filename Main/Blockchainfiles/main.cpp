@@ -1,45 +1,28 @@
 #include "initialization.cpp"
-extern Blockchain blockchain;
 
-
-std::string filename = "blockchain.json";
-std::string requestbuffer = "buffer.json";
-
-Document blockchainstate;
-Document bufferState;
-
-
-void addBlocktochain(Block x)
+Blockchain addBlocktochain(Block x)
 {
+    Blockchain blockchain;
     blockchain.addBlock(x);
     addblock2db(x);
-    addblocktoDocument(x);
+    addblocktoDocument(x,"filename");
+    return blockchain;
 }
-Blockchain test(){
+
+Blockchain test(Blockchain x){
     std:cout << "test program start \n";
-    Blockchain x;
+    
     Block block;
-    Document jsondata;
 
-    std::cout << "Add to chain \n";
-    x.addBlock(block);
-
-    std::cout << "Add to JSON \n";
-    jsondata = addblocktoDocument(block,filename);
-
-    std::cout << "Add to DB \n";
-    addblock2db(block);
-
+    x = addBlocktochain(block);
     std::cout << "test program copmlete \n";
     return x;
 }
 
-
-
 int main() {
     Blockchain x;
     x = initializeNode();
-    x = test();
+    x = test(x);
     x.printChain();
     //listen()
     //check buffer

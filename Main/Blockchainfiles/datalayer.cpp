@@ -1,18 +1,8 @@
-#include "blockchain.cpp"
-
-#include <sqlite3.h>
-#include <fstream>
-
-#include "rapidjson/document.h"
-#include "rapidjson/filereadstream.h"
-#include <rapidjson/document.h>
-#include <rapidjson/istreamwrapper.h>
-#include <rapidjson/writer.h>
-#include <rapidjson/stringbuffer.h>
-#include <rapidjson/ostreamwrapper.h>
+#include "fileops.cpp"
 
 using namespace rapidjson;
 using namespace std;
+
 //sql
 void createTable() {
     sqlite3* db;
@@ -77,7 +67,7 @@ void addblock2db(Block x) {
 
     // Close the database
     sqlite3_close(db);
-}
+};
 
 
 
@@ -130,31 +120,3 @@ Document addblocktoDocument(Block x, string filename)
     cout<<"Adding block to Json document completed\n";
     return jsonfile;
 };
-
-Document loadFile(string filename) 
-{
-    ifstream ifs {filename};
-    
-    IStreamWrapper isw { ifs };
-
-    Document doc {};
-    doc.ParseStream( isw );
-
-    return doc;
-};
-
-Document createfile(std::string x)
-{
-        ofstream myFile(x);
-    if(!myFile.good())
-    {        
-        ofstream myFile(x);
-        myFile.close();
-        return;
-        
-    }else
-    {
-      return loadFile(x);
-    };
-}
-

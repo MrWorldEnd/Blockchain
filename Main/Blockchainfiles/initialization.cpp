@@ -10,8 +10,8 @@ Blockchain initializeNode() {
     std::cout << "initializeNode Started\n";
     Blockchain x;
     createTable();
-    createfile(filename);
-    createfile(requestbuffer);
+    createfile("blockchain.json");
+    createfile("buffer.json");
     return x;
 }
 
@@ -21,5 +21,5 @@ Blockchain initializeMasterNode() {
     Blockchain x;
     x = initializeNode();
     createTable();
-
+    return x;
 }
