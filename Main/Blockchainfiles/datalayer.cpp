@@ -82,7 +82,7 @@ void addblock2db(Block x) {
 
 
 
-Value jBlock (Block x)
+Value jBlock (Block x, Document::AllocatorType& y)
 {
     cout<< "json sub program";
 
@@ -90,19 +90,19 @@ Value jBlock (Block x)
     Value obj(kObjectType);
     Value val(kObjectType);
 
-    obj.AddMember("index", x.getData().getsize(), allocator);
+    obj.AddMember("index", x.getData().getsize(), y);
 
     //size_t printing
-    val.SetString(x.getHash().c_str(),  allocator);
-    obj.AddMember("Hash", val, allocator);
+    val.SetString(x.getHash().c_str(),  y);
+    obj.AddMember("Hash", val, y);
 
-    val.SetString(x.getPrevHash().c_str(), allocator);
-    obj.AddMember("PrevHash", val, allocator);
+    val.SetString(x.getPrevHash().c_str(), y);
+    obj.AddMember("PrevHash", val, y);
 
-    val.SetString(x.getData().getstr().c_str(), allocator);
-    obj.AddMember("TransactionData", val, allocator);
+    val.SetString(x.getData().getstr().c_str(), y);
+    obj.AddMember("TransactionData", val, y);
     
-    out.PushBack(obj, allocator);
+    out.PushBack(obj, y);
 
     return out;
 };
@@ -118,7 +118,7 @@ Document addblocktoDocument(Block x, string filename)
 
     size_t sz = allocator.Size();
     Value json_objects(kObjectType);
-    json_objects = jBlock(x);
+    json_objects = jBlock(x, allocator);
     jsonfile.AddMember("Block", json_objects, allocator);
 
     // Convert JSON document to string
@@ -154,116 +154,7 @@ Document createfile(std::string x)
         
     }else
     {
-      myFile = loadFile(x);
-      return;
+      return loadFile(x);
     };
 }
 
-int SearchJson(std::string x)
-{
-	std::string fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("json/deluxe/treasurebag.json");
-
-	    unsigned long bufferSize = 0;
-
-	    const char* mFileData = (const char*)CCFileUtils::sharedFileUtils()->getFileData(fullPath.c_str(), "r", &bufferSize);
-
-	    std::string clearData(mFileData);
-	    size_t pos = clearData.rfind("}");
-	    clearData = clearData.substr(0, pos+1);
-	    document.Parse<0>(clearData.c_str());
-	    assert(document.HasMember(x));
-
-	    const Value& a = document[x]; // Using a reference for consecutive access is handy and faster.
-	    assert(a.IsArray());
-	    
-		// Using a reference for consecutive access is handy and faster.
-        const Value& a = document[x];
-        assert(a.IsArray());
-        for (SizeType i = 0; i < a.Size(); i++) // Uses SizeType instead of size_t
-                printf("a[%d] = %d\n", i, a[i].GetString());
-                block y;
-                y.setIndex(a[i]["index"].GetString());
-
-                blockchain.addblock(n)
-
-
-		        CCLOG("a[%d] = %d\n", i, a[i].GetInt());
-        }
-    const char* json_data = R"(
-        [
-            {"name": "Alice", "age": 25},
-            {"name": "Bob", "age": 30},
-            {"name": "Charlie", "age": 22}
-        ]
-    )";
-
-    Document document;
-    document.Parse(json_data);
-
-    if (!document.IsArray()) {
-        cout << "Invalid JSON format. Expected an array." << endl;
-        return 1;
-    }
-
-    stack<pair<string, int>> dataStack;
-
-    for (SizeType i = 0; i < document.Size(); ++i) {
-        const Value& obj = document[i];
-        
-        if (obj.HasMember("Block") && obj.HasMember("index") && obj.HasMember("previousHash") && obj.HasMember("TxDataset") && obj.HasMember("TxDataset") && obj.HasMember("currentHash") && obj["name"].IsString() && obj["age"].IsInt()) {
-            string name = obj["name"].GetString();
-            int age = obj["age"].GetInt();
-            dataStack.push(make_pair(name, age));
-        } else {
-            cout << "Invalid object format at index " << i << endl;
-        }
-    }
-
-    cout << "Data stored in stack:" << endl;
-    while (!dataStack.empty()) {
-        pair<string, int> data = dataStack.top();
-        dataStack.pop();
-        cout << "Name: " << data.first << ", Age: " << data.second << endl;
-    }
-
-    return 0;
-}
-{
-    const char* json_data = R"(
-        {
-            "person1": {"name": "Alice", "age": 25},
-            "person2": {"name": "Bob", "age": 30},
-            "person3": {"name": "Charlie", "age": 22}
-        }
-    )";
-
-    Document document;
-    document.Parse(json_data);
-
-    if (!document.IsObject()) {
-        cout << "Invalid JSON format. Expected an object." << endl;
-        return 1;
-    }
-
-    stack<pair<string, int>> dataStack;
-
-    for (Value::ConstMemberIterator itr = document.MemberBegin(); itr != document.MemberEnd(); ++itr) {
-        if (itr->value.IsObject() && itr->value.HasMember("name") && itr->value.HasMember("age") &&
-            itr->value["name"].IsString() && itr->value["age"].IsInt()) {
-            string name = itr->value["name"].GetString();
-            int age = itr->value["age"].GetInt();
-            dataStack.push(make_pair(name, age));
-        } else {
-            cout << "Invalid object format for key: " << itr->name.GetString() << endl;
-        }
-    }
-
-    cout << "Data stored in stack:" << endl;
-    while (!dataStack.empty()) {
-        pair<string, int> data = dataStack.top();
-        dataStack.pop();
-        cout << "Name: " << data.first << ", Age: " << data.second << endl;
-    }
-
-    return 0;
-}

@@ -2,8 +2,8 @@
 extern Blockchain blockchain;
 
 
-std::string filename = CCFileUtils::sharedFileUtils()->fullPathForFilename("blockchain.json");
-std::string requestbuffer = CCFileUtils::sharedFileUtils()->fullPathForFilename("buffer.json");
+std::string filename = "blockchain.json";
+std::string requestbuffer = "buffer.json";
 
 Document blockchainstate;
 Document bufferState;
