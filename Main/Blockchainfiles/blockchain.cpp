@@ -46,6 +46,21 @@ void Blockchain::printChain()
     }
 }
 //Bad!! only for demo
+
+std::vector<std::string> Blockchain::getstate()
+{
+    std::vector<Block>::iterator it;
+    std::vector<std::string> state;
+
+    for (it = chain.begin(); it != chain.end(); ++it)
+    {
+        Block current = *it;
+        state.push_back(current.getHash());
+    }
+    return state;
+}
+//Bad!! only for demo
+
 void Blockchain::addBlock(TxDataset d)
 {
     int index = (int)chain.size();

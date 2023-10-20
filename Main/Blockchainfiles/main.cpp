@@ -1,5 +1,16 @@
 #include "initialization.cpp"
 
+Blockchain consensusmechanism(Blockchain x)
+{
+    if(!x.isvalid())
+    {
+        Blockchain y;
+        return y;
+    }else
+    {        
+        return x;}
+}
+
 Blockchain addBlocktochain(Block x)
 {
     Blockchain blockchain;
@@ -10,6 +21,7 @@ Blockchain addBlocktochain(Block x)
     blockchain.addBlock(x);
     addblock2db(x);
     addblocktoDocument(x,"filename");
+    blockchain = consensusmechanism(blockchain);
     return blockchain;
 }
 

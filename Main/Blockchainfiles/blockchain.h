@@ -32,6 +32,7 @@ public:
     bool isvalid();
     void printChain();
     void addBlock(TxDataset d);
+    std::vector<std::string> getstate();
 
     Block getlatestBlock(){return chain.back();}
 
