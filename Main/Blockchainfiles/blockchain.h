@@ -33,7 +33,7 @@ public:
     void printChain();
     void addBlock(TxDataset d);
 
-    Block *getlatestBlock(){return &chain.back();}
+    Block getlatestBlock(){return chain.back();}
 
     std::string outChain();
 };

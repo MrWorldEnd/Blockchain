@@ -3,6 +3,10 @@
 Blockchain addBlocktochain(Block x)
 {
     Blockchain blockchain;
+    Block y;
+    y = blockchain.getlatestBlock();
+    x.setPrevHash(y.getHash());
+    x.setIndex(y.getIndex() + 1);
     blockchain.addBlock(x);
     addblock2db(x);
     addblocktoDocument(x,"filename");
