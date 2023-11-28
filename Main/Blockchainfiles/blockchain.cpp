@@ -47,17 +47,15 @@ void Blockchain::printChain()
 }
 //Bad!! only for demo
 
-std::vector<std::string> Blockchain::getstate()
+void Blockchain::buildstate()
 {
     std::vector<Block>::iterator it;
-    std::vector<std::string> state;
 
     for (it = chain.begin(); it != chain.end(); ++it)
     {
         Block current = *it;
-        state.push_back(current.getHash());
+        blockchainstate.push(current.getHash());
     }
-    return state;
 }
 //Bad!! only for demo
 
