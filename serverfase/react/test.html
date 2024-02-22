@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="stylesheet.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append to JSON File</title>
+    <script src="script.js"></script>
+</head>
+<body>
+
+
+    <header>
+            <div class="topnav">
+                <a href="home.html"> <img src="imgs/coins.jpg" alt="Dark Oblivion" width="50" height="50"> </a>
+                <a href="test.html">testfile</a>
+            </div> 
+    </header>
+
+    <button onclick="appendData()">Append Data</button>
+
+    <script>
+        async function appendData() {
+            try {
+                // Fetch existing JSON data
+                const response = await fetch('buffer.json');
+                const existingData = await response.json();
+
+                // Modify the existing data or append new data
+                const newData = {
+                    key: 'value',
+                    // add more properties as needed
+                };
+
+                existingData.push(newData);
+
+                // Write back to the file
+                const writeFile = await fetch('buffer.json', {
+                    method: 'PUT', // Use 'PUT' method to update the file
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(existingData),
+                });
+
+                // Check if the write operation was successful
+                if (writeFile.ok) {
+                    console.log('Data appended successfully!');
+                } else {
+                    console.error('Failed to append data.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+
+<footer>
+	<address>
+	  Contact email: <a href="mailto:st1259@live.mdx.ac.uk">Mail me</a>
+	</address>
+</footer> 
+
+</html>
+
