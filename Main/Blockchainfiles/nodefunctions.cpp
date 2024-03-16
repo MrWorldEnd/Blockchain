@@ -8,7 +8,8 @@ Blockchain consensusmechanism(Blockchain x)
         return y;
     }else
     {        
-        x.buildstate();
+        x = Blockchain();
+        x = initdata();
         return x;}
 }
 

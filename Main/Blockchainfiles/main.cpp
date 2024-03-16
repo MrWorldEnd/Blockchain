@@ -1,10 +1,10 @@
-#include "node.cpp"
+#include "node.h"
 
 int main() {
     Blockchain x;
     x = initializeNode();
     x = test(x);
     x.printChain();
-    //listen()
     //check buffer
+    //chill
 }

@@ -31,6 +31,25 @@ Block::Block()
     currentHash = sha256(x.getstr());
 }
 
+
+Block::Block(std::string prevHash)
+{
+    index = 0;
+    previousHash = prevHash;
+    TxDataset x;
+    setData(x);
+    currentHash = sha256(x.getstr());
+}
+
+Block::Block(TxDataset d)
+{
+    index = 0;
+    previousHash = '0';
+    TxDataset x = d;
+    setData(x);
+    currentHash = sha256(x.getstr());
+}
+
 Block::Block(int inx, TxDataset d, std::string prevHash)
 {
     index = inx;

@@ -69,8 +69,29 @@ void addblock2db(Block x) {
     sqlite3_close(db);
 };
 
+Document addblocktoDocument(Block x, string filename)
+{
+    cout<<"Adding block to Json started\n";
 
+    Document jsonfile = loadFile(filename);
+    jsonfile.SetObject();
 
+    Document::AllocatorType& allocator = jsonfile.GetAllocator();
+
+    size_t sz = allocator.Size();
+    Value json_objects(kObjectType);
+    json_objects = jBlock(x, allocator);
+    jsonfile.AddMember("Block", json_objects, allocator);
+
+    // Convert JSON document to string
+    StringBuffer strbuf;
+    PrettyWriter<StringBuffer> writer(strbuf);
+    jsonfile.Accept(writer);
+    string temp=strbuf.GetString();
+
+    cout<<"Adding block to Json document completed\n";
+    return jsonfile;
+};
 
 Value jBlock (Block x, Document::AllocatorType& y)
 {
@@ -97,26 +118,65 @@ Value jBlock (Block x, Document::AllocatorType& y)
     return out;
 };
 
-Document addblocktoDocument(Block x, string filename)
+//load Init data
+
+Blockchain initdata()
 {
-    cout<<"Adding block to Json started\n";
+        // Open the file for reading 
+    FILE* fp = fopen("InitializeData.json", "r"); 
+  
+    // Use a FileReadStream to 
+      // read the data from the file 
+    char readBuffer[65536]; 
+    rapidjson::FileReadStream is(fp, readBuffer, 
+                                 sizeof(readBuffer)); 
+  
+    // Parse the JSON data  
+      // using a Document object 
+    rapidjson::Document d; 
+    d.ParseStream(is); 
+  
+    // Close the file 
+    fclose(fp); 
+  
+    // Access the data in the JSON document 
+    std::cout << d["Hash"].GetString() << std::endl; 
+    std::cout << d["ThisDevice"].GetString() << std::endl;
+    std::cout << d["MyDevices"].GetString() << std::endl;
+    Blockchain x = Blockchain(d["Hash"].GetString());
+    return x;
+}
 
-    Document jsonfile = loadFile(filename);
-    jsonfile.SetObject();
+stack<Device> readbuffer()
+{
+        // Open the file for reading 
+    FILE* fp = fopen("buffer.json", "r"); 
+  
+    // Use a FileReadStream to 
+      // read the data from the file 
+    char readBuffer[65536]; 
+    rapidjson::FileReadStream is(fp, readBuffer, 
+                                 sizeof(readBuffer)); 
+  
+    // Parse the JSON data  
+      // using a Document object 
+    rapidjson::Document d; 
+    d.ParseStream(is); 
+  
+    // Close the file 
+    fclose(fp); 
+  
+    stack <Device> requestlist;
+    Device request; 
+    // Access the device
+    for (SizeType i = 0; i < d["transactions"].Size(); i++){
+        request.setid(d["id"][i].GetInt());
+        request.setname(d["name"][i].GetString());
+        request.setIP(IPaddress(d["ip"][i].GetString()));
+        requestlist.push(request);
+    }
 
-    Document::AllocatorType& allocator = jsonfile.GetAllocator();
+    resetfile("buffer.json");
 
-    size_t sz = allocator.Size();
-    Value json_objects(kObjectType);
-    json_objects = jBlock(x, allocator);
-    jsonfile.AddMember("Block", json_objects, allocator);
-
-    // Convert JSON document to string
-    StringBuffer strbuf;
-    PrettyWriter<StringBuffer> writer(strbuf);
-    jsonfile.Accept(writer);
-    string temp=strbuf.GetString();
-
-    cout<<"Adding block to Json document completed\n";
-    return jsonfile;
-};
+    return requestlist;
+}

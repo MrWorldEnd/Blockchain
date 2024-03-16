@@ -45,19 +45,6 @@ void Blockchain::printChain()
         std::cout << current;
     }
 }
-//Bad!! only for demo
-
-void Blockchain::buildstate()
-{
-    std::vector<Block>::iterator it;
-
-    for (it = chain.begin(); it != chain.end(); ++it)
-    {
-        Block current = *it;
-        blockchainstate.push(current.getHash());
-    }
-}
-//Bad!! only for demo
 
 void Blockchain::addBlock(TxDataset d)
 {

@@ -105,7 +105,8 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "cinttypes": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "optional": "cpp"
   },
   "C_Cpp_Runner.msvcSecureNoWarnings": false
 }

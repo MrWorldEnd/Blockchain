@@ -18,7 +18,9 @@ private:
     TxDataset pdata;
 public:
     Block ();
+    Block (std::string prevHash);
     Block (int idx,TxDataset d, std::string prevHash);
+    Block (TxDataset d);
 
     int getIndex();
     std::string getHash();

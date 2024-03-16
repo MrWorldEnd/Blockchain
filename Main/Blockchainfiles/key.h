@@ -55,7 +55,7 @@ class Key {
     int accesslvl;
 	char host[256];
 	char const *id;
-	char const *ip;
+	char const *ipdistributer;
 	char const *itemcode;
 	struct hostent *host_entry;
   public:
@@ -66,12 +66,20 @@ class Key {
 	check_host_name(name);
 	host_entry = gethostbyname(host); //find host information
 	check_host_entry(host_entry);
-	ip = inet_ntoa(*((struct in_addr*) host_entry->h_addr_list[0])); //Convert into IP string
+	ipdistributer = inet_ntoa(*((struct in_addr*) host_entry->h_addr_list[0])); //Convert into IP string
 	
 	id = "ID not set";
 	itemcode = "ID not set";
 	accesslvl = 0;
 	};
+	Key(char const *id, char const *itemcode)
+	{
+		Key x;
+		x.setID(id);
+		x.setitemcode(itemcode);
+		//her
+	};
+	
 
 Key guestKey(Key SuperUser)
 	{
@@ -83,6 +91,9 @@ Key guestKey(Key SuperUser)
 	};
 
 int getaccesslvl(){return accesslvl;}
+void setID(char const* x){id = x;};
+void setipdistributer(char const* x){ipdistributer = x;};
+void setitemcode(char const* x){itemcode = x;};
 
 friend ostream& operator<<(ostream& os,const Key& x)
 {

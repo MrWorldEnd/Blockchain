@@ -41,3 +41,13 @@ Document createfile(std::string x)
       return loadFile(x);
     };
 }
+
+void resetfile(std::string x)
+{
+    ofstream buffer(x);
+
+
+    buffer.clear();
+    buffer.close();
+}
+    
